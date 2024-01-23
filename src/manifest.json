@@ -1,0 +1,8 @@
+{
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "popup.html",
+        "default_title": "Extension popup"
+    },
+    "permissions": ["activeTab", "scripting"]
+}
