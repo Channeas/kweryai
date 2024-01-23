@@ -1,13 +1,13 @@
 <template>
     <ChatWindow v-if="showChat" />
 
-    <ExtensionToggle v-model="showChat" />
+    <ChatToggle v-model="showChat" />
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue";
 import ChatWindow from "./components/ChatWindow.vue";
-import ExtensionToggle from "./components/ExtensionToggle.vue";
+import ChatToggle from "./components/ChatToggle.vue";
 
 const showChat = ref(false);
 </script>

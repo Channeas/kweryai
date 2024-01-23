@@ -1,5 +1,5 @@
 <template>
-    <div @click="changeToggleValue" class="kwery-extension-toggle">
+    <div @click="changeToggleValue" class="kwery-chat-toggle">
         <div v-if="model" class="kwery-icon-container">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +44,7 @@ function changeToggleValue() {
 </script>
 
 <style scoped>
-.kwery-extension-toggle {
+.kwery-chat-toggle {
     height: 50px;
     width: 50px;
     position: fixed;
