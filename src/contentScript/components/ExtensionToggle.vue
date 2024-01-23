@@ -57,6 +57,7 @@ function changeToggleValue() {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    z-index: 1000000000000000000000000000000000000000000000000000000000000000000000000;
 }
 
 .kwery-icon-container {
