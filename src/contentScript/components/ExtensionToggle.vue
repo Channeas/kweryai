@@ -1,13 +1,13 @@
 <template>
-    <div @click="changeToggleValue" class="extension-toggle">
-        <div v-if="model" class="icon-container">
+    <div @click="changeToggleValue" class="kwery-extension-toggle">
+        <div v-if="model" class="kwery-icon-container">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="toggle-icon"
+                class="kwery-toggle-icon"
             >
                 <path
                     stroke-linecap="round"
@@ -16,14 +16,14 @@
                 />
             </svg>
         </div>
-        <div v-else class="icon-container">
+        <div v-else class="kwery-icon-container">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
                 stroke="currentColor"
-                class="toggle-icon"
+                class="kwery-toggle-icon"
             >
                 <path
                     stroke-linecap="round"
@@ -44,7 +44,7 @@ function changeToggleValue() {
 </script>
 
 <style scoped>
-.extension-toggle {
+.kwery-extension-toggle {
     height: 50px;
     width: 50px;
     position: fixed;
@@ -59,12 +59,12 @@ function changeToggleValue() {
     cursor: pointer;
 }
 
-.icon-container {
+.kwery-icon-container {
     height: 24px;
     width: 24px;
 }
 
-.toggle-icon {
+.kwery-toggle-icon {
     height: 24px;
     width: 24px;
     color: #000;
