@@ -9,11 +9,9 @@ import { Conversation } from "@/types/Conversation";
 import ConversationRenderer from "./ConversationRenderer.vue";
 
 // TODO: Possibly migrate the conversation prop to a model
-const props = defineProps<{
+defineProps<{
     conversation: Conversation;
 }>();
-
-console.log(props);
 </script>
 
 <style scoped>
