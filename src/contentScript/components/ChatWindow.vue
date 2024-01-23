@@ -1,17 +1,24 @@
 <template>
     <div class="kwery-chat-window">
-        <HelloWorld
-            message="Welcome To Your New Vue.js + TypeScript Chrome Extension!"
-        />
+        <ConversationRenderer :conversation="conversation" />
     </div>
 </template>
 
 <script lang="ts" setup>
-import HelloWorld from "../../components/HelloWorld.vue";
+import { Conversation } from "@/types/Conversation";
+import ConversationRenderer from "./ConversationRenderer.vue";
+
+// TODO: Possibly migrate the conversation prop to a model
+const props = defineProps<{
+    conversation: Conversation;
+}>();
+
+console.log(props);
 </script>
 
-<style>
+<style scoped>
 .kwery-chat-window {
+    font-size: 14px;
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -20,14 +27,13 @@ import HelloWorld from "../../components/HelloWorld.vue";
     box-sizing: border-box;
     display: flex;
     justify-content: center;
-    align-items: center;
 
     padding: 20px;
     position: fixed;
     bottom: 90px;
     right: 20px;
-    width: 300px;
-    height: 400px;
+    width: 350px;
+    height: 450px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.25);
