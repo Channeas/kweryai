@@ -1,5 +1,7 @@
 <template>
     <div ref="renderer" class="kwery-conversation-renderer">
+        <!-- TODO: Improve key -->
+        <!-- TODO: Add transition -->
         <ConversationMessage
             v-for="(message, index) of conversation.messages"
             :key="message.text"

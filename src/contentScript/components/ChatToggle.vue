@@ -1,4 +1,5 @@
 <template>
+    <!-- TODO: Switch to a button? -->
     <div @click="changeToggleValue" class="kwery-chat-toggle">
         <div v-if="model" class="kwery-icon-container">
             <svg
