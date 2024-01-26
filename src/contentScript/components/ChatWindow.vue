@@ -26,7 +26,6 @@ defineProps<{
     display: flex;
     justify-content: center;
 
-    padding: 20px;
     position: fixed;
     bottom: 90px;
     right: 20px;

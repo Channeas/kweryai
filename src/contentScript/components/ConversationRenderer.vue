@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="kwery-conversation-renderer">
         <ConversationMessage
             v-for="(message, index) of conversation.messages"
             :key="message.text"
@@ -28,4 +28,9 @@ defineProps<{
 }>();
 </script>
 
-<style></style>
+<style scoped>
+.kwery-conversation-renderer {
+    overflow-y: auto;
+    padding: 20px;
+}
+</style>
