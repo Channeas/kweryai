@@ -37,6 +37,21 @@ defineProps<{
     margin: 16px 0;
 }
 
+.kwery-message-align-left {
+    justify-content: start;
+}
+.kwery-message-align-right {
+    justify-content: end;
+}
+
+.kwery-message-no-top-margin {
+    margin-top: 0;
+}
+
+.kwery-message-no-bottom-margin {
+    margin-bottom: 0;
+}
+
 .kwery-message-cluster-with-above {
     margin-top: 8px;
 }
@@ -61,20 +76,5 @@ defineProps<{
     /* TODO: Rework colors */
     background-color: #4399ff;
     color: #fff;
-}
-
-.kwery-message-align-left {
-    justify-content: start;
-}
-.kwery-message-align-right {
-    justify-content: end;
-}
-
-.kwery-message-no-top-margin {
-    margin-top: 0;
-}
-
-.kwery-message-no-bottom-margin {
-    margin-bottom: 0;
 }
 </style>
