@@ -4,6 +4,7 @@
             <!-- TODO: Switch to an auto-resizing textarea? -->
             <input
                 v-model="message"
+                ref="inputField"
                 class="kwery-chat-input-field"
                 placeholder="Ask away..."
             />
@@ -39,16 +40,18 @@ const emit = defineEmits<{
 }>();
 
 const message = ref("");
-const messageHasContent = computed(() => !!message.value);
+const messageHasContent = computed(() => message.value && message.value.trim());
+
+const inputField = ref<HTMLInputElement>();
 
 function handleSubmit() {
     if (!messageHasContent.value) {
         return;
     }
 
-    emit("submit", message.value);
-
+    emit("submit", message.value.trim());
     message.value = "";
+    inputField.value?.blur();
 }
 </script>
 
@@ -89,6 +92,7 @@ function handleSubmit() {
     height: 32px;
     width: 32px;
     background-color: transparent !important;
+    cursor: pointer;
 }
 
 .kwery-chat-input-submit-icon {
