@@ -77,6 +77,7 @@ function handleSubmit() {
     width: 100%;
     outline: none;
     border: none;
+    margin: 0 !important;
 }
 
 .kwery-chat-input-field::placeholder {
