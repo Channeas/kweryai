@@ -7,6 +7,7 @@
             :key="message.text"
             :message="message"
             :noTopMargin="index === 0"
+            :noBottomMargin="index === conversation.messages.length - 1"
             :shouldClusterWithAbove="
                 index !== 0 &&
                 conversation.messages[index - 1].sentByUser ===
