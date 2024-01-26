@@ -6,6 +6,16 @@
             :key="message.text"
             :message="message"
             :noTopMargin="index === 0"
+            :shouldClusterWithAbove="
+                index !== 0 &&
+                conversation.messages[index - 1].sentByUser ===
+                    message.sentByUser
+            "
+            :shouldClusterWithBelow="
+                !!conversation.messages[index + 1] &&
+                conversation.messages[index + 1].sentByUser ===
+                    message.sentByUser
+            "
         />
     </div>
 </template>

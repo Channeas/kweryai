@@ -4,7 +4,9 @@
         :class="{
             'kwery-message-align-left': !message.sentByUser,
             'kwery-message-align-right': message.sentByUser,
-            'kwery-message-no-top-margin': noTopMargin
+            'kwery-message-no-top-margin': noTopMargin,
+            'kwery-message-cluster-with-above': shouldClusterWithAbove,
+            'kwery-message-cluster-with-below': shouldClusterWithBelow
         }"
     >
         <div
@@ -22,6 +24,8 @@ import { Message } from "@/types/Conversation";
 defineProps<{
     message: Message;
     noTopMargin?: boolean;
+    shouldClusterWithAbove: boolean;
+    shouldClusterWithBelow: boolean;
 }>();
 </script>
 
@@ -29,6 +33,14 @@ defineProps<{
 .kwery-conversation-message-container {
     display: flex;
     margin: 16px 0;
+}
+
+.kwery-message-cluster-with-above {
+    margin-top: 8px;
+}
+
+.kwery-message-cluster-with-below {
+    margin-bottom: 8px;
 }
 
 .kwery-conversation-message {
