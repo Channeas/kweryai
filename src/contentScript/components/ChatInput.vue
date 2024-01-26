@@ -69,6 +69,7 @@ function handleSubmit() {
 
     /* TODO: Rework colors */
     background-color: #f5f5f5;
+    color: #2c3e50 !important;
 
     width: 100%;
     outline: none;
@@ -77,7 +78,7 @@ function handleSubmit() {
 
 .kwery-chat-input-field::placeholder {
     /* TODO: Rework colors */
-    color: unset;
+    color: #4f6f8f !important;
 }
 
 .kwery-chat-input-submit-button {
@@ -85,6 +86,9 @@ function handleSubmit() {
     position: absolute;
     right: 16px;
     padding: 4px;
+    height: 32px;
+    width: 32px;
+    background-color: transparent !important;
 }
 
 .kwery-chat-input-submit-icon {
