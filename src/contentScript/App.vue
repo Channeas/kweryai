@@ -30,6 +30,30 @@ const textConversation: Conversation = {
         {
             text: "And where?",
             sentByUser: true
+        },
+        {
+            text: "Also how many members are there?",
+            sentByUser: true
+        },
+        {
+            text: "Slow down bucko",
+            sentByUser: false
+        },
+        {
+            text: "One question at a time",
+            sentByUser: false
+        },
+        {
+            text: "It was founded by Robert Zubrin",
+            sentByUser: false
+        },
+        {
+            text: "On Earth",
+            sentByUser: false
+        },
+        {
+            text: "The member count is not stated on this page however",
+            sentByUser: false
         }
     ]
 };
