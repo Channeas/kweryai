@@ -1,5 +1,5 @@
 <template>
-    <div class="kwery-conversation-renderer">
+    <div ref="renderer" class="kwery-conversation-renderer">
         <ConversationMessage
             v-for="(message, index) of conversation.messages"
             :key="message.text"
@@ -20,12 +20,21 @@
 </template>
 
 <script lang="ts" setup>
+import { onMounted, ref } from "vue";
 import { Conversation } from "@/types/Conversation";
 import ConversationMessage from "./ConversationMessage.vue";
 
 defineProps<{
     conversation: Conversation;
 }>();
+
+const renderer = ref<HTMLDivElement>();
+
+onMounted(() => {
+    if (renderer.value) {
+        renderer.value.scrollTop = renderer.value.scrollHeight;
+    }
+});
 </script>
 
 <style scoped>
