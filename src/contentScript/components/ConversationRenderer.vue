@@ -1,6 +1,5 @@
 <template>
     <div>
-        <!-- TODO: Cluster messages from the same sender -->
         <ConversationMessage
             v-for="(message, index) of conversation.messages"
             :key="message.text"
