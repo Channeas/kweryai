@@ -6,7 +6,7 @@ extensionContainer.setAttribute("id", "kwery-extension-container");
 
 document.body.appendChild(extensionContainer);
 
-createApp(App).mount("#kwery-extension-container");
+createApp(App).mount(extensionContainer);
 
 console.log("Hello from the content script 42", extensionContainer);
 
