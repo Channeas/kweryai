@@ -10,12 +10,12 @@
             'kwery-message-cluster-with-below': shouldClusterWithBelow
         }"
     >
-        <div
+        <p
             class="kwery-conversation-message"
             :class="{ 'kwery-message-from-user': message.sentByUser }"
         >
             {{ message.text }}
-        </div>
+        </p>
     </div>
 </template>
 
@@ -64,9 +64,11 @@ defineProps<{
     display: inline-block;
     max-width: 85%;
     text-align: left;
+    margin: 0 !important;
     padding: 8px;
     border-radius: 4px;
     word-break: break-word;
+    line-height: 1.5;
 
     /* TODO: Rework colors */
     background-color: #eceeed;
