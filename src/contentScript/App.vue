@@ -1,19 +1,30 @@
 <template>
-    <ChatWindow v-if="showChat" :conversation="textConversation" />
+    <ChatWindow
+        v-if="showChat"
+        @addMessage="addMessage"
+        :conversation="textConversation"
+    />
 
     <ChatToggle v-model="showChat" />
 </template>
 
 <script setup lang="ts">
 import { Conversation } from "@/types/Conversation";
-import { ref } from "vue";
+import { reactive, ref } from "vue";
 import ChatWindow from "./components/ChatWindow.vue";
 import ChatToggle from "./components/ChatToggle.vue";
 
 const showChat = ref(false);
 
+function addMessage(text: string) {
+    textConversation.messages.push({
+        text,
+        sentByUser: true
+    });
+}
+
 // TODO: Store conversations based on the current tab?
-const textConversation: Conversation = {
+const textConversation: Conversation = reactive({
     messages: [
         {
             text: "When did the Mars Society start?",
@@ -56,7 +67,7 @@ const textConversation: Conversation = {
             sentByUser: false
         }
     ]
-};
+});
 </script>
 
 <style scoped>

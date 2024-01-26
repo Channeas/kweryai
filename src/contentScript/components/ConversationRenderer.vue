@@ -22,20 +22,25 @@
 </template>
 
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
+import { nextTick, onMounted, ref, watch } from "vue";
 import { Conversation } from "@/types/Conversation";
 import ConversationMessage from "./ConversationMessage.vue";
 
-defineProps<{
+const props = defineProps<{
     conversation: Conversation;
 }>();
 
 const renderer = ref<HTMLDivElement>();
 
-onMounted(() => {
+function jumpToBottom() {
     if (renderer.value) {
         renderer.value.scrollTop = renderer.value.scrollHeight;
     }
+}
+
+onMounted(() => jumpToBottom());
+watch(props.conversation.messages, () => nextTick(() => jumpToBottom()), {
+    deep: true
 });
 </script>
 

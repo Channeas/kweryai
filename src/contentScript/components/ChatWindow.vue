@@ -1,16 +1,22 @@
 <template>
     <div class="kwery-chat-window">
         <ConversationRenderer :conversation="conversation" />
+        <ChatInput @submit="(text) => emit('addMessage', text)" />
     </div>
 </template>
 
 <script lang="ts" setup>
 import { Conversation } from "@/types/Conversation";
 import ConversationRenderer from "./ConversationRenderer.vue";
+import ChatInput from "./ChatInput.vue";
 
 // TODO: Possibly migrate the conversation prop to a model
 defineProps<{
     conversation: Conversation;
+}>();
+
+const emit = defineEmits<{
+    addMessage: [message: string];
 }>();
 </script>
 
@@ -24,6 +30,7 @@ defineProps<{
     color: #2c3e50;
     box-sizing: border-box;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 
     position: fixed;
