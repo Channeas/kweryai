@@ -2,11 +2,11 @@ import { createApp } from "vue";
 import App from "./App.vue";
 
 const extensionContainer = document.createElement("div");
-extensionContainer.setAttribute("id", "extensionContainer");
+extensionContainer.setAttribute("id", "kwery-extension-container");
 
 document.body.appendChild(extensionContainer);
 
-createApp(App).mount("#extensionContainer");
+createApp(App).mount("#kwery-extension-container");
 
 console.log("Hello from the content script 42", extensionContainer);
 
