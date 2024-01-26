@@ -49,6 +49,7 @@ defineProps<{
     text-align: left;
     padding: 8px;
     border-radius: 4px;
+    word-break: break-word;
 
     /* TODO: Rework colors */
     background-color: #eceeed;
