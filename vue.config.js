@@ -22,7 +22,10 @@ const configureWebpack = {
         new webpack.DefinePlugin({
             __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: false
         })
-    ]
+    ],
+    entry: {
+        worker: "./src/worker/index.ts"
+    }
 };
 
 const pages = {

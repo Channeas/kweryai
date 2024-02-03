@@ -4,5 +4,8 @@
         "default_popup": "popup.html",
         "default_title": "Extension popup"
     },
+    "background": {
+        "service_worker": "js/worker.js"
+    },
     "permissions": ["activeTab", "scripting"]
 }
