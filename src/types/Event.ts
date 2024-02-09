@@ -20,7 +20,7 @@ export type SetApiKeyEvent = {
 };
 
 export type SetApiKeyEventResponse = {
-    type: "setApiKeyEventResponse";
+    type: "setApiKeyResponse";
     response: {
         isKeyValid: boolean;
     };

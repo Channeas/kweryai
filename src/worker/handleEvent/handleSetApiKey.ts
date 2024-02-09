@@ -1,4 +1,5 @@
 import { SetApiKeyEvent, SetApiKeyEventResponse } from "@/types/Event";
+
 import { setApiKey } from "../storage/apiKey";
 
 export default async function handleSetApiKey(
@@ -11,7 +12,7 @@ export default async function handleSetApiKey(
     await setApiKey(event.content.apiKey);
 
     return {
-        type: "setApiKeyEventResponse",
+        type: "setApiKeyResponse",
         response: {
             isKeyValid: true
         }
