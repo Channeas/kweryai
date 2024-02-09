@@ -1,4 +1,5 @@
 import { SetApiKeyEvent, SetApiKeyEventResponse } from "@/types/Event";
+import { setApiKey } from "../storage/apiKey";
 
 export default async function handleSetApiKey(
     event: SetApiKeyEvent
@@ -7,9 +8,7 @@ export default async function handleSetApiKey(
 
     // TODO: Validate API key
 
-    await chrome.storage.local.set({
-        kweryOpenaiApiKey: event.content.apiKey
-    });
+    await setApiKey(event.content.apiKey);
 
     return {
         type: "setApiKeyEventResponse",
@@ -17,9 +16,4 @@ export default async function handleSetApiKey(
             isKeyValid: true
         }
     };
-}
-
-export async function getApiKey() {
-    const apiKey = await chrome.storage.local.get("kweryOpenaiApiKey");
-    return apiKey;
 }
