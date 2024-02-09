@@ -14,7 +14,7 @@ import { reactive, ref } from "vue";
 import ChatWindow from "./components/ChatWindow.vue";
 import ChatToggle from "./components/ChatToggle.vue";
 
-const showChat = ref(false);
+const showChat = ref(true);
 
 function addMessage(text: string) {
     textConversation.messages.push({
