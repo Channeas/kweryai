@@ -13,61 +13,37 @@ import { Conversation } from "@/types/Conversation";
 import { reactive, ref } from "vue";
 import ChatWindow from "./components/ChatWindow.vue";
 import ChatToggle from "./components/ChatToggle.vue";
+import sendEvent from "@/utils/sendEvent";
 
 const showChat = ref(true);
 
-function addMessage(text: string) {
+async function addMessage(text: string) {
     textConversation.messages.push({
         text,
         sentByUser: true
     });
+
+    const response = await sendEvent({
+        type: "setConversation",
+        content: { conversation: textConversation }
+    });
+
+    // TODO: Deal with failure
+    console.log(response);
 }
 
-// TODO: Store conversations based on the current tab?
 const textConversation: Conversation = reactive({
-    messages: [
-        {
-            text: "When did the Mars Society start?",
-            sentByUser: true
-        },
-        {
-            text: "The Mars Society was founded in August 1998.",
-            sentByUser: false
-        },
-        {
-            text: "Okay, who founded it?",
-            sentByUser: true
-        },
-        {
-            text: "And where?",
-            sentByUser: true
-        },
-        {
-            text: "Also how many members are there?",
-            sentByUser: true
-        },
-        {
-            text: "Slow down bucko",
-            sentByUser: false
-        },
-        {
-            text: "One question at a time",
-            sentByUser: false
-        },
-        {
-            text: "It was founded by Robert Zubrin",
-            sentByUser: false
-        },
-        {
-            text: "On Earth",
-            sentByUser: false
-        },
-        {
-            text: "The member count is not stated on this page however",
-            sentByUser: false
-        }
-    ]
+    messages: []
 });
+
+async function getConversation() {
+    const response = await sendEvent({ type: "getConversation" });
+    if (response.type === "getConversationResponse") {
+        textConversation.messages = response.response.conversation.messages;
+    }
+}
+
+getConversation();
 </script>
 
 <style scoped>

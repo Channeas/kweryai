@@ -1,3 +1,5 @@
+import { Conversation } from "./Conversation";
+
 export type GetCompletionEvent = {
     type: "getCompletion";
     content: {
@@ -9,6 +11,17 @@ export type GetCompletionEventResponse = {
     type: "getCompletionResponse";
     response: {
         completion: string;
+    };
+};
+
+export type GetConversationEvent = {
+    type: "getConversation";
+};
+
+export type GetConversationEventResponse = {
+    type: "getConversationResponse";
+    response: {
+        conversation: Conversation;
     };
 };
 
@@ -26,5 +39,28 @@ export type SetApiKeyEventResponse = {
     };
 };
 
-export type Event = GetCompletionEvent | SetApiKeyEvent;
-export type EventResponse = GetCompletionEventResponse | SetApiKeyEventResponse;
+export type SetConversationEvent = {
+    type: "setConversation";
+    content: {
+        conversation: Conversation;
+    };
+};
+
+export type SetConversationEventResponse = {
+    type: "setConversationResponse";
+    response: {
+        success: boolean;
+    };
+};
+
+export type Event =
+    | GetCompletionEvent
+    | GetConversationEvent
+    | SetApiKeyEvent
+    | SetConversationEvent;
+
+export type EventResponse =
+    | GetCompletionEventResponse
+    | GetConversationEventResponse
+    | SetApiKeyEventResponse
+    | SetConversationEventResponse;
