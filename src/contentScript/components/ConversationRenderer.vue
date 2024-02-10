@@ -33,14 +33,16 @@ const props = defineProps<{
 
 const renderer = ref<HTMLDivElement>();
 
-function jumpToBottom() {
-    if (renderer.value) {
-        renderer.value.scrollTop = renderer.value.scrollHeight;
-    }
+function jumpToBottomAfterNextTick() {
+    nextTick(() => {
+        if (renderer.value) {
+            renderer.value.scrollTop = renderer.value.scrollHeight;
+        }
+    });
 }
 
-onMounted(() => jumpToBottom());
-watch(props.conversation.messages, () => nextTick(() => jumpToBottom()), {
+onMounted(() => jumpToBottomAfterNextTick());
+watch(props.conversation, () => jumpToBottomAfterNextTick(), {
     deep: true
 });
 </script>
@@ -49,5 +51,6 @@ watch(props.conversation.messages, () => nextTick(() => jumpToBottom()), {
 .kwery-conversation-renderer {
     overflow-y: auto;
     padding: 20px;
+    flex: 1;
 }
 </style>
