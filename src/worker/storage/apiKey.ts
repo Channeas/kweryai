@@ -4,7 +4,7 @@ export async function setApiKey(apiKey: string) {
     });
 }
 
-export async function getApiKey() {
+export async function getApiKey(): Promise<string> {
     const { kweryOpenaiApiKey: apiKey } =
         await chrome.storage.local.get("kweryOpenaiApiKey");
     return apiKey;
