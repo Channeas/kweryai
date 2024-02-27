@@ -69,6 +69,8 @@ defineProps<{
     border-radius: 4px;
     word-break: break-word;
     line-height: 1.5;
+    /* TODO: Set this using a variable */
+    font-size: 14px;
 
     /* TODO: Rework colors */
     background-color: #eceeed;
