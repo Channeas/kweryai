@@ -6,8 +6,6 @@ import { getProvider } from "../aiProviders";
 export default async function handleSetApiKey(
     event: SetApiKeyEvent
 ): Promise<SetApiKeyEventResponse> {
-    console.log("setApiKey", event);
-
     const provider = await getProvider();
 
     const { apiKey } = event.content;

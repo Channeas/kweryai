@@ -4,8 +4,6 @@ import { getProvider } from "../aiProviders";
 export default async function handleGetCompletion(
     event: GetCompletionEvent
 ): Promise<GetCompletionEventResponse> {
-    console.log("handleGetCompletion", event.content);
-
     const { conversation, pageContext } = event.content;
 
     const provider = await getProvider();
