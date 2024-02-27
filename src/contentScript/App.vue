@@ -23,13 +23,10 @@ async function addMessage(text: string) {
         sentByUser: true
     });
 
-    const response = await sendEvent({
-        type: "setConversation",
-        content: { conversation: textConversation }
-    });
+    await setConversation();
 
-    // TODO: Deal with failure
-    console.log(response);
+    // TODO: Debounce - wait with this if a user starts typing a new message right away
+    await getCompletion();
 }
 
 const textConversation: Conversation = reactive({
@@ -41,6 +38,33 @@ async function getConversation() {
     if (response.type === "getConversationResponse") {
         textConversation.messages = response.response.conversation.messages;
     }
+}
+
+async function setConversation() {
+    await sendEvent({
+        type: "setConversation",
+        content: { conversation: textConversation }
+    });
+}
+
+async function getCompletion() {
+    // TODO: Error handling
+    const response = await sendEvent({
+        type: "getCompletion",
+        content: {
+            conversation: textConversation,
+            pageContext: document.body.innerText
+        }
+    });
+
+    if (response.type === "getCompletionResponse") {
+        textConversation.messages.push({
+            text: response.response.completion,
+            sentByUser: false
+        });
+    }
+
+    await setConversation();
 }
 
 getConversation();
