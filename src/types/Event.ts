@@ -3,7 +3,8 @@ import { Conversation } from "./Conversation";
 export type GetCompletionEvent = {
     type: "getCompletion";
     content: {
-        text: string;
+        conversation: Conversation;
+        pageContext: string;
     };
 };
 
