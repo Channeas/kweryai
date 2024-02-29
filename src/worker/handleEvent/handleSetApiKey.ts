@@ -7,6 +7,7 @@ import {
 import { setApiKey } from "../storage/apiKey";
 import { getProvider } from "../aiProviders";
 import getErrorAsString from "@/utils/getErrorAsString";
+import { getSelectedProvider } from "../storage/selectedProvider";
 
 export default async function handleSetApiKey(
     event: SetApiKeyEvent
@@ -16,12 +17,13 @@ export default async function handleSetApiKey(
     };
 
     try {
-        const provider = await getProvider();
+        const selectedProvider = await getSelectedProvider();
+        const provider = await getProvider(selectedProvider);
 
         const { apiKey } = event.content;
         const keyStatus = await provider.validateApiKey(apiKey);
         if (keyStatus.valid) {
-            await setApiKey(event.content.apiKey);
+            await setApiKey(selectedProvider, event.content.apiKey);
             status.success = true;
         } else {
             status.message = keyStatus.message;

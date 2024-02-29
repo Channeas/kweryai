@@ -22,7 +22,7 @@ export class OpenaiProvider implements Provider {
             model
         };
 
-        const apiKey = await getApiKey();
+        const apiKey = await getApiKey(providerKey);
 
         const response = await fetch(
             "https://api.openai.com/v1/chat/completions",
@@ -55,7 +55,7 @@ export class OpenaiProvider implements Provider {
     }
 
     async listModels(passedApiKey?: string) {
-        const apiKey = passedApiKey || (await getApiKey());
+        const apiKey = passedApiKey || (await getApiKey(providerKey));
 
         const response = await fetch("https://api.openai.com/v1/models", {
             headers: {
