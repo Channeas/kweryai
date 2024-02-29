@@ -19,13 +19,12 @@ export default async function handleSetApiKey(
         const provider = await getProvider();
 
         const { apiKey } = event.content;
-        const isKeyValid = await provider.validateApiKey(apiKey);
-        if (isKeyValid) {
+        const keyStatus = await provider.validateApiKey(apiKey);
+        if (keyStatus.valid) {
             await setApiKey(event.content.apiKey);
             status.success = true;
         } else {
-            // TODO: Get error message from the provider
-            status.message = "API key does not work";
+            status.message = keyStatus.message;
         }
     } catch (error) {
         status.message = getErrorAsString(error) || "Unable to set API key";

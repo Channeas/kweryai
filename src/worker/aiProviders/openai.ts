@@ -1,8 +1,9 @@
 import { Conversation } from "@/types/Conversation";
-import { Provider } from "@/worker/_types/Provider";
+import { ApiKeyStatus, Provider } from "@/worker/_types/Provider";
 
 import { getApiKey } from "@/worker/storage/apiKey";
 import { getSelectedModel } from "../storage/selectedModel";
+import getErrorAsString from "@/utils/getErrorAsString";
 
 const providerKey = "openai";
 
@@ -72,18 +73,25 @@ export class OpenaiProvider implements Provider {
     }
 
     async validateApiKey(apiKeyToTest?: string) {
+        const keyStatus: ApiKeyStatus = {
+            valid: false
+        };
+
         try {
             const models = await this.listModels(apiKeyToTest);
-            return models.length > 0;
+            keyStatus.valid = models.length > 0;
         } catch (error) {
             // TODO: Respond with the error message
             console.warn(
                 "Ran into error while trying to validate api key",
                 error
             );
+
+            keyStatus.message =
+                getErrorAsString(error) || "API key does not work";
         }
 
-        return false;
+        return keyStatus;
     }
 
     private parseMessages(conversation: Conversation, context: string) {
