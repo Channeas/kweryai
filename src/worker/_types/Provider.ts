@@ -1,6 +1,8 @@
 import { Conversation } from "@/types/Conversation";
 
-export type ProviderKey = "openai";
+export const allProviderKeys = ["openai"] as const;
+
+export type ProviderKey = (typeof allProviderKeys)[number];
 
 export type ApiKeyStatus = {
     valid: boolean;

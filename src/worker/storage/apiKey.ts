@@ -1,6 +1,4 @@
-import { ProviderKey } from "../_types/Provider";
-
-// TODO: It should be possible to clear all keys
+import { allProviderKeys, ProviderKey } from "../_types/Provider";
 
 export async function getApiKey(provider: ProviderKey): Promise<string> {
     const storageKey = createStorageKeyForProvider(provider);
@@ -15,6 +13,11 @@ export async function setApiKey(provider: ProviderKey, apiKey: string) {
     await chrome.storage.local.set({
         [storageKey]: apiKey
     });
+}
+
+export async function clearAllApiKeys() {
+    const storageKeys = allProviderKeys.map(createStorageKeyForProvider);
+    await chrome.storage.local.remove(storageKeys);
 }
 
 function createStorageKeyForProvider(provider: ProviderKey) {
