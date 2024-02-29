@@ -1,5 +1,6 @@
 <template>
     <div class="kwery-chat-window">
+        <ErrorRenderer ref="errorRenderer" />
         <ConversationRenderer :conversation="conversation" />
         <ChatInput @submit="(text) => emit('addMessage', text)" />
     </div>
@@ -9,6 +10,10 @@
 import { Conversation } from "@/types/Conversation";
 import ConversationRenderer from "./ConversationRenderer.vue";
 import ChatInput from "./ChatInput.vue";
+import ErrorRenderer from "./ErrorRenderer.vue";
+import { ref } from "vue";
+
+const errorRenderer = ref();
 
 // TODO: Possibly migrate the conversation prop to a model
 defineProps<{
@@ -18,6 +23,17 @@ defineProps<{
 const emit = defineEmits<{
     addMessage: [message: string];
 }>();
+
+function addError(message: string) {
+    // TODO: Handle falsy condition
+    if (errorRenderer.value) {
+        errorRenderer.value.addError(message);
+    }
+}
+
+defineExpose({
+    addError
+});
 </script>
 
 <style scoped>

@@ -1,30 +1,45 @@
 import { Conversation } from "@/types/Conversation";
 import {
     GetConversationEvent,
-    GetConversationEventResponse
+    GetConversationEventResponse,
+    EventStatus
 } from "@/types/Event";
 
 import { getConversation } from "../storage/conversation";
+import getErrorAsString from "@/utils/getErrorAsString";
 
 export default async function handleGetConversation(
     event: GetConversationEvent,
     sender: chrome.runtime.MessageSender
 ): Promise<GetConversationEventResponse> {
+    const status: EventStatus = {
+        success: false
+    };
+
     let conversation = createEmptyConversation();
 
-    const conversationId = sender?.tab?.id?.toString();
-    if (conversationId) {
-        const storedConversation = await getConversation(conversationId);
-        if (storedConversation) {
-            conversation = storedConversation;
+    try {
+        const conversationId = sender?.tab?.id?.toString();
+        if (conversationId) {
+            // TODO: Implement error handling
+            const storedConversation = await getConversation(conversationId);
+            if (storedConversation) {
+                conversation = storedConversation;
+            }
         }
+
+        status.success = true;
+    } catch (error) {
+        status.message =
+            getErrorAsString(error) || "Unable to get conversation";
     }
 
     return {
         type: "getConversationResponse",
         response: {
             conversation
-        }
+        },
+        status
     };
 }
 

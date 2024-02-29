@@ -8,8 +8,6 @@ const providerKey = "openai";
 
 export class OpenaiProvider implements Provider {
     async getCompletion(conversation: Conversation, pageContext: string) {
-        // TODO: Add error handling
-
         const model = await getSelectedModel(providerKey);
         const messages = this.parseMessages(conversation, pageContext);
 
@@ -39,9 +37,19 @@ export class OpenaiProvider implements Provider {
 
         const parsedResponse = await response.json();
 
-        const completion = parsedResponse.choices?.[0]?.message?.content;
+        if (parsedResponse.error) {
+            throw new Error(
+                parsedResponse.error.message || "Unable to get completion"
+            );
+        }
 
-        // TODO: Implement error handling
+        const completion = parsedResponse.choices?.[0]?.message?.content;
+        if (!completion) {
+            throw new Error(
+                `Unable to get completion - please make sure the ${model} model returns text completions`
+            );
+        }
+
         return completion;
     }
 

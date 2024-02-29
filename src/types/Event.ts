@@ -1,5 +1,10 @@
 import { Conversation } from "./Conversation";
 
+export type EventStatus = {
+    success: boolean;
+    message?: string;
+};
+
 export type GetCompletionEvent = {
     type: "getCompletion";
     content: {
@@ -11,8 +16,9 @@ export type GetCompletionEvent = {
 export type GetCompletionEventResponse = {
     type: "getCompletionResponse";
     response: {
-        completion: string;
+        completion?: string;
     };
+    status: EventStatus;
 };
 
 export type GetConversationEvent = {
@@ -24,6 +30,7 @@ export type GetConversationEventResponse = {
     response: {
         conversation: Conversation;
     };
+    status: EventStatus;
 };
 
 export type SetApiKeyEvent = {
@@ -35,9 +42,7 @@ export type SetApiKeyEvent = {
 
 export type SetApiKeyEventResponse = {
     type: "setApiKeyResponse";
-    response: {
-        isKeyValid: boolean;
-    };
+    status: EventStatus;
 };
 
 export type SetConversationEvent = {
@@ -49,9 +54,7 @@ export type SetConversationEvent = {
 
 export type SetConversationEventResponse = {
     type: "setConversationResponse";
-    response: {
-        success: boolean;
-    };
+    status: EventStatus;
 };
 
 export type Event =

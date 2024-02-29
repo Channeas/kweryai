@@ -1,30 +1,34 @@
 import {
     SetConversationEvent,
-    SetConversationEventResponse
+    SetConversationEventResponse,
+    EventStatus
 } from "@/types/Event";
 
 import { setConversation } from "../storage/conversation";
+import getErrorAsString from "@/utils/getErrorAsString";
 
 export default async function handleSetConversation(
     event: SetConversationEvent,
     sender: chrome.runtime.MessageSender
 ): Promise<SetConversationEventResponse> {
-    let success = false;
+    const status: EventStatus = {
+        success: false
+    };
 
     const conversationId = sender?.tab?.id?.toString();
     if (conversationId) {
         try {
             await setConversation(conversationId, event.content.conversation);
-            success = true;
+            status.success = true;
         } catch (error) {
-            console.warn("Unable to save conversation", error, sender);
+            console.error("Unable to save conversation", error, sender);
+            status.message =
+                getErrorAsString(error) || "Unable to save conversation";
         }
     }
 
     return {
         type: "setConversationResponse",
-        response: {
-            success
-        }
+        status
     };
 }

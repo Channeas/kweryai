@@ -3,6 +3,7 @@
         v-if="showChat"
         @addMessage="addMessage"
         :conversation="textConversation"
+        ref="chatWindow"
     />
 
     <ChatToggle v-model="showChat" />
@@ -16,6 +17,17 @@ import ChatToggle from "./components/ChatToggle.vue";
 import sendEvent from "@/utils/sendEvent";
 
 const showChat = ref(true);
+
+const chatWindow = ref();
+
+function addError(errorMessage: string) {
+    if (chatWindow.value) {
+        chatWindow.value.addError(errorMessage);
+    }
+
+    // TODO: Cache errors, to be shown when the chat window is reopened?
+    // TODO: Also update the icon to show that an error has been encountered
+}
 
 async function addMessage(text: string) {
     textConversation.messages.push({
@@ -48,8 +60,7 @@ async function setConversation() {
 }
 
 async function getCompletion() {
-    // TODO: Error handling
-    const response = await sendEvent({
+    const returnedEvent = await sendEvent({
         type: "getCompletion",
         content: {
             conversation: textConversation,
@@ -57,12 +68,27 @@ async function getCompletion() {
         }
     });
 
-    if (response.type === "getCompletionResponse") {
-        textConversation.messages.push({
-            text: response.response.completion,
-            sentByUser: false
-        });
+    const { type } = returnedEvent;
+    if (type !== "getCompletionResponse") {
+        return;
     }
+
+    const { status } = returnedEvent;
+    if (!status.success) {
+        addError(status.message || "Unable to get completion");
+        return;
+    }
+
+    const { response } = returnedEvent;
+    if (!response.completion) {
+        addError("Unable to get completion, no value returned");
+        return;
+    }
+
+    textConversation.messages.push({
+        text: response.completion,
+        sentByUser: false
+    });
 
     await setConversation();
 }
