@@ -1,5 +1,5 @@
 import { Conversation } from "./Conversation";
-import { Settings } from "./Settings";
+import { Settings, SettingsToUpdate } from "./Settings";
 
 export type EventStatus = {
     success: boolean;
@@ -68,16 +68,28 @@ export type SetConversationEventResponse = {
     status: EventStatus;
 };
 
+export type SetSettingsEvent = {
+    type: "setSettings";
+    content: SettingsToUpdate;
+};
+
+export type SetSettingsEventResponse = {
+    type: "setSettings";
+    status: EventStatus;
+};
+
 export type Event =
     | GetCompletionEvent
     | GetConversationEvent
     | GetSettingsEvent
     | SetApiKeyEvent
-    | SetConversationEvent;
+    | SetConversationEvent
+    | SetSettingsEvent;
 
 export type EventResponse =
     | GetCompletionEventResponse
     | GetConversationEventResponse
     | GetSettingsEventResponse
     | SetApiKeyEventResponse
-    | SetConversationEventResponse;
+    | SetConversationEventResponse
+    | SetSettingsEventResponse;

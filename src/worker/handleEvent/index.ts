@@ -5,6 +5,7 @@ import handleGetConversation from "./handleGetConversation";
 import handleGetSettings from "./handleGetSettings";
 import handleSetApiKey from "./handleSetApiKey";
 import handleSetConversation from "./handleSetConversation";
+import handleSetSettings from "./handleSetSettings";
 
 type ResponseCallback = (response?: EventResponse) => void;
 
@@ -38,6 +39,8 @@ async function routeEventToHandler(
             return await handleSetApiKey(event);
         case "setConversation":
             return await handleSetConversation(event, sender);
+        case "setSettings":
+            return await handleSetSettings(event);
     }
 
     // TODO: Throw error if there was no matching event?
