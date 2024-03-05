@@ -36,6 +36,10 @@ const pages = {
     },
     script: {
         entry: "src/contentScript/main.ts"
+    },
+    settings: {
+        entry: "src/settings/main.ts",
+        template: "public/settings.html"
     }
 };
 
