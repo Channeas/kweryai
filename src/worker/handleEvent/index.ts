@@ -1,10 +1,10 @@
 import { Event, EventResponse } from "@/types/Event";
 
 import handleGetCompletion from "./handleGetCompletion";
-import handleSetApiKey from "./handleSetApiKey";
 import handleGetConversation from "./handleGetConversation";
-import handleSetConversation from "./handleSetConversation";
 import handleGetSettings from "./handleGetSettings";
+import handleSetApiKey from "./handleSetApiKey";
+import handleSetConversation from "./handleSetConversation";
 
 type ResponseCallback = (response?: EventResponse) => void;
 
