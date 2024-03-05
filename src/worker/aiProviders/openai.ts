@@ -1,5 +1,5 @@
 import { Conversation } from "@/types/Conversation";
-import { ApiKeyStatus, Provider } from "@/worker/_types/Provider";
+import { ApiKeyStatus, Provider } from "@/types/Provider";
 
 import { getApiKey } from "@/worker/storage/apiKey";
 import { getSelectedModel } from "../storage/selectedModel";

@@ -1,4 +1,4 @@
-import { Provider, ProviderKey } from "@/worker/_types/Provider";
+import { Provider, ProviderKey } from "@/types/Provider";
 import { OpenaiProvider } from "./openai";
 import { getSelectedProvider } from "@/worker/storage/selectedProvider";
 

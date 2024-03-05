@@ -1,4 +1,4 @@
-import { ProviderKey } from "@/worker/_types/Provider";
+import { ProviderKey } from "@/types/Provider";
 
 import { defaultProviderModels } from "@/defaults";
 

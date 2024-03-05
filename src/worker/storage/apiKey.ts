@@ -1,4 +1,4 @@
-import { allProviderKeys, ProviderKey } from "../_types/Provider";
+import { allProviderKeys, ProviderKey } from "@/types/Provider";
 
 export async function getApiKey(provider: ProviderKey): Promise<string> {
     const storageKey = createStorageKeyForProvider(provider);
