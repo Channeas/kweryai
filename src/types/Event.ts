@@ -1,4 +1,5 @@
 import { Conversation } from "./Conversation";
+import { Settings } from "./Settings";
 
 export type EventStatus = {
     success: boolean;
@@ -33,6 +34,16 @@ export type GetConversationEventResponse = {
     status: EventStatus;
 };
 
+export type GetSettingsEvent = {
+    type: "getSettings";
+};
+
+export type GetSettingsEventResponse = {
+    type: "getSettingsResponse";
+    response?: Settings;
+    status: EventStatus;
+};
+
 export type SetApiKeyEvent = {
     type: "setApiKey";
     content: {
@@ -60,11 +71,13 @@ export type SetConversationEventResponse = {
 export type Event =
     | GetCompletionEvent
     | GetConversationEvent
+    | GetSettingsEvent
     | SetApiKeyEvent
     | SetConversationEvent;
 
 export type EventResponse =
     | GetCompletionEventResponse
     | GetConversationEventResponse
+    | GetSettingsEventResponse
     | SetApiKeyEventResponse
     | SetConversationEventResponse;

@@ -4,6 +4,7 @@ import handleGetCompletion from "./handleGetCompletion";
 import handleSetApiKey from "./handleSetApiKey";
 import handleGetConversation from "./handleGetConversation";
 import handleSetConversation from "./handleSetConversation";
+import handleGetSettings from "./handleGetSettings";
 
 type ResponseCallback = (response?: EventResponse) => void;
 
@@ -31,6 +32,8 @@ async function routeEventToHandler(
             return await handleGetCompletion(event);
         case "getConversation":
             return await handleGetConversation(event, sender);
+        case "getSettings":
+            return await handleGetSettings();
         case "setApiKey":
             return await handleSetApiKey(event);
         case "setConversation":
