@@ -26,8 +26,7 @@ export default async function handleGetSettings(): Promise<GetSettingsEventRespo
 
         status.success = true;
     } catch (error) {
-        status.message =
-            getErrorAsString(error) || "Unable to get conversation";
+        status.message = getErrorAsString(error) || "Unable to get settings";
     }
 
     return {
