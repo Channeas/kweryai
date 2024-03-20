@@ -7,12 +7,12 @@
 
 <script setup lang="ts">
 import { ProviderKey } from "@/types/Provider";
+import { SettingsToUpdate } from "@/types/Settings";
 
 import { nextTick, ref, watch } from "vue";
 
 import sendEvent from "@/utils/sendEvent";
 import ProviderSection from "./sections/ProviderSection.vue";
-import { SettingsToUpdate } from "@/types/Settings";
 
 const hasLoadedSettings = ref(false);
 
