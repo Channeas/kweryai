@@ -1,6 +1,7 @@
 <template>
     <div class="kwery-settings">
-        <ProviderSection v-model="selectedProviderKey" />
+        <!-- TODO: Enable this when there are more providers available -->
+        <ProviderSection v-model="selectedProviderKey" v-if="false" />
     </div>
 </template>
 
