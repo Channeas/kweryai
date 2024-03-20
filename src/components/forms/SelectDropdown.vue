@@ -39,11 +39,6 @@ import { SelectOption } from "./types";
 import { computed, ref } from "vue";
 import SelectOptions from "./SelectOptions.vue";
 
-// type DropdownOption = {
-//     label: string;
-//     key: string;
-// };
-
 const props = withDefaults(
     defineProps<{
         description?: string;
