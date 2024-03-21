@@ -98,16 +98,18 @@ async function loadSettings() {
         type: "getSettings"
     });
 
+    const errorMessage = "Unable to load settings";
+
     const { type, status } = settingsEvent;
     if (type !== "getSettingsResponse" || !status.success) {
-        // TODO: Handle error messages
+        addError(status.message || errorMessage);
         return;
     }
 
     const { response: initialSettings } = settingsEvent;
 
     if (!initialSettings) {
-        // TODO: Show an error message?
+        addError(errorMessage);
         return;
     }
 
