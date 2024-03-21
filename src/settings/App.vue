@@ -1,5 +1,7 @@
 <template>
     <div class="kwery-settings">
+        <ErrorRenderer ref="errorRenderer" absolutePositioning />
+
         <!-- TODO: Enable this when there are more providers available -->
         <ProviderSection v-model="selectedProviderKey" v-if="false" />
     </div>
@@ -12,7 +14,18 @@ import { SettingsToUpdate } from "@/types/Settings";
 import { nextTick, ref, watch } from "vue";
 
 import sendEvent from "@/utils/sendEvent";
+
+import ErrorRenderer from "@/components/ErrorRenderer.vue";
 import ProviderSection from "./sections/ProviderSection.vue";
+
+const errorRenderer = ref();
+
+function addError(message: string) {
+    // TODO: Handle falsy condition
+    if (errorRenderer.value) {
+        errorRenderer.value.addError(message);
+    }
+}
 
 const hasLoadedSettings = ref(false);
 
