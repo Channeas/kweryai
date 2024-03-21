@@ -10,10 +10,17 @@
 import { Conversation } from "@/types/Conversation";
 import ConversationRenderer from "./ConversationRenderer.vue";
 import ChatInput from "./ChatInput.vue";
-import ErrorRenderer from "./ErrorRenderer.vue";
+import ErrorRenderer from "@/components/ErrorRenderer.vue";
 import { ref } from "vue";
 
 const errorRenderer = ref();
+
+function addError(message: string) {
+    // TODO: Handle falsy condition
+    if (errorRenderer.value) {
+        errorRenderer.value.addError(message);
+    }
+}
 
 // TODO: Possibly migrate the conversation prop to a model
 defineProps<{
@@ -23,13 +30,6 @@ defineProps<{
 const emit = defineEmits<{
     addMessage: [message: string];
 }>();
-
-function addError(message: string) {
-    // TODO: Handle falsy condition
-    if (errorRenderer.value) {
-        errorRenderer.value.addError(message);
-    }
-}
 
 defineExpose({
     addError
