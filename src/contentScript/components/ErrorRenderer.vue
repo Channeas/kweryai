@@ -1,5 +1,9 @@
 <template>
-    <div v-if="oldestErrorMessage" class="kwery-error-renderer">
+    <div
+        v-if="oldestErrorMessage"
+        class="kwery-error-renderer"
+        :class="{ 'kwery-error-renderer-absolute': absolutePositioning }"
+    >
         <div class="kwery-error-renderer-left">
             <div class="kwery-error-renderer-icon-container">
                 <!-- TODO: Move to a separate file? -->
@@ -39,6 +43,10 @@
 <script lang="ts" setup>
 import { computed, reactive } from "vue";
 
+defineProps<{
+    absolutePositioning?: boolean;
+}>();
+
 const errorMessages: string[] = reactive([]);
 
 const oldestErrorMessage = computed(
@@ -69,6 +77,13 @@ defineExpose({ addError });
 
     /* TODO: Rework colors */
     background-color: #fef2f2;
+}
+
+.kwery-error-renderer-absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 .kwery-error-renderer-left {
