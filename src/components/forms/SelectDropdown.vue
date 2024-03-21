@@ -134,12 +134,10 @@ document.addEventListener("keyup", (keyupEvent) => {
     color: #9ca3af;
 
     /* TODO: Add universal transition */
-    /* transition: 0.6s; */
     transition: 0.3s;
 }
 
 .select-dropdown-open .select-dropdown-toggle-chevron {
-    /* transform: rotateX(180deg); */
     rotate: 180deg;
 }
 </style>
