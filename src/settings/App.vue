@@ -4,19 +4,26 @@
 
         <!-- TODO: Enable this when there are more providers available -->
         <ProviderSection v-model="selectedProviderKey" v-if="false" />
+
+        <ApiKeySection
+            @clearApiKey="clearApiKey"
+            @saveApiKey="saveApiKey"
+            :placeholder="placeholderApiKeyForProvider"
+        />
     </div>
 </template>
 
 <script setup lang="ts">
 import { ProviderKey } from "@/types/Provider";
-import { SettingsToUpdate } from "@/types/Settings";
+import { ApiKeysObject, SettingsToUpdate } from "@/types/Settings";
 
-import { nextTick, ref, watch } from "vue";
+import { computed, nextTick, ref, watch } from "vue";
 
 import sendEvent from "@/utils/sendEvent";
 
 import ErrorRenderer from "@/components/ErrorRenderer.vue";
 import ProviderSection from "./sections/ProviderSection.vue";
+import ApiKeySection from "./sections/ApiKeySection.vue";
 
 const errorRenderer = ref();
 
@@ -39,7 +46,54 @@ watch(selectedProviderKey, () => {
     updateSettings({ provider: selectedProviderKey.value });
 });
 
+const placeholderApiKeys = ref<ApiKeysObject>();
+
+const placeholderApiKeyForProvider = computed(() => {
+    if (!selectedProviderKey.value || !placeholderApiKeys.value) {
+        return "";
+    }
+    return placeholderApiKeys.value[selectedProviderKey.value] || "";
+});
+
+async function clearApiKey() {
+    if (!selectedProviderKey.value) {
+        return;
+    }
+
+    const response = await sendEvent({
+        type: "clearApiKey",
+        content: {
+            provider: selectedProviderKey.value
+        }
+    });
+
+    if (!response.status.success) {
+        addError(response.status.message || "Unable to clear API key");
+        return;
+    }
+
+    await loadSettings();
+}
+
+async function saveApiKey(newApiKey: string) {
+    const response = await sendEvent({
+        type: "setApiKey",
+        content: {
+            apiKey: newApiKey
+        }
+    });
+
+    if (!response.status.success) {
+        addError(response.status.message || "Unable to save API key");
+    }
+
+    await loadSettings();
+}
+
 async function loadSettings() {
+    // TODO: Remove this reset?
+    hasLoadedSettings.value = false;
+
     const settingsEvent = await sendEvent({
         type: "getSettings"
     });
@@ -58,6 +112,7 @@ async function loadSettings() {
     }
 
     selectedProviderKey.value = initialSettings.provider;
+    placeholderApiKeys.value = initialSettings.obfuscatedApiKeys;
 
     nextTick(() => (hasLoadedSettings.value = true));
 }
@@ -93,5 +148,8 @@ async function updateSettings(keysToUpdate: SettingsToUpdate) {
 <style scoped>
 .kwery-settings {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
 }
 </style>
