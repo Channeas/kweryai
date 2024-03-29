@@ -107,6 +107,7 @@ document.addEventListener("keyup", (keyupEvent) => {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    user-select: none;
 
     /* Tailwind shadow */
     box-shadow:
