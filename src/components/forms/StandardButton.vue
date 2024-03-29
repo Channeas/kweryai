@@ -52,15 +52,13 @@ defineProps<{
 
 .kwery-primary-button {
     /* TODO: Rework colors */
-    /* background-color: #4399ff; */
-    background-color: #0ea5e9;
+    background-color: #4399ff;
     color: #fff;
 }
 
 .kwery-primary-button:hover:not([disabled]) {
-    /* .kwery-primary-button:hover:not(:disabled) { */
     /* TODO: Rework colors */
-    background-color: #0284c7;
+    background-color: #2a8bff;
 }
 
 .kwery-danger-button {
