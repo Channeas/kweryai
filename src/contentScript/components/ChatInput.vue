@@ -90,15 +90,25 @@ function handleSubmit() {
     position: absolute;
     right: 16px;
     padding: 4px;
-    height: 32px;
-    width: 32px;
+    height: 28px;
+    width: 28px;
     background-color: transparent !important;
     cursor: pointer;
+
+    /* TODO: Use variable */
+    border-radius: 3px;
+
+    /* TODO: Add universal transition */
+    transition: 0.3s;
+}
+
+.kwery-chat-input-submit-button:hover:not([disabled]) {
+    background-color: #ddecff !important;
 }
 
 .kwery-chat-input-submit-icon {
-    height: 24px;
-    width: 24px;
+    height: 20px;
+    width: 20px;
 
     /* TODO: Rework colors */
     color: #4399ff;
