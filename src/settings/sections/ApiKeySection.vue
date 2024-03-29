@@ -48,8 +48,8 @@ const emit = defineEmits<{
 function handleSave() {
     if (apiKey.value) {
         emit("saveApiKey", apiKey.value);
+        apiKey.value = "";
     }
-    console.log("TODO: Implement saving");
 }
 
 function handleClear() {

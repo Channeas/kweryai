@@ -87,6 +87,8 @@ async function saveApiKey(newApiKey: string) {
         addError(response.status.message || "Unable to save API key");
     }
 
+    // TODO: Show success notification
+
     await loadSettings();
 }
 
