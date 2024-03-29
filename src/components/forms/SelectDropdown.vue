@@ -29,6 +29,7 @@
             @selected="setSelectedOption"
             :options="options"
             :highlightedOption="selectedOption"
+            :numberOfVisibleOptions="numberOfVisibleOptions"
         />
     </div>
 </template>
@@ -43,6 +44,7 @@ const props = withDefaults(
     defineProps<{
         description?: string;
         options: SelectOption[];
+        numberOfVisibleOptions?: number;
     }>(),
     { description: "Select an option" }
 );

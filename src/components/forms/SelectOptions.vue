@@ -1,5 +1,5 @@
 <template>
-    <div class="select-options-container">
+    <div class="select-options-container" :style="{ 'max-height': maxHeight }">
         <button
             v-for="option of options"
             :key="option.key"
@@ -16,16 +16,27 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from "vue";
+
 import { SelectOption } from "./types";
 
-defineProps<{
-    options: SelectOption[];
-    highlightedOption?: SelectOption;
-}>();
+const props = withDefaults(
+    defineProps<{
+        options: SelectOption[];
+        highlightedOption?: SelectOption;
+        numberOfVisibleOptions?: number;
+    }>(),
+    { numberOfVisibleOptions: 4 }
+);
 
 defineEmits<{
     selected: [option: SelectOption];
 }>();
+
+const maxHeight = computed(() => {
+    const optionHeightInPixels = 32;
+    return `${optionHeightInPixels * props.numberOfVisibleOptions}px`;
+});
 
 /* TODO: Keyboard selection */
 </script>
@@ -34,6 +45,7 @@ defineEmits<{
 .select-options-container {
     width: calc(100% - 2px);
     position: absolute;
+    overflow-y: auto;
 
     /* Tailwind shadow */
     box-shadow:
