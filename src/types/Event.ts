@@ -20,6 +20,22 @@ export type ClearApiKeyEventResponse = {
     status: EventStatus;
 };
 
+export type GetAvailableModelsEvent = {
+    type: "getAvailableModels";
+    content?: {
+        // If no provider is passed, the currently selected provider is used
+        provider?: ProviderKey;
+    };
+};
+
+export type GetAvailableModelsEventResponse = {
+    type: "getAvailableModels";
+    status: EventStatus;
+    response?: {
+        models: string[];
+    };
+};
+
 export type GetCompletionEvent = {
     type: "getCompletion";
     content: {
@@ -96,6 +112,7 @@ export type SetSettingsEventResponse = {
 
 export type Event =
     | ClearApiKeyEvent
+    | GetAvailableModelsEvent
     | GetCompletionEvent
     | GetConversationEvent
     | GetSettingsEvent
@@ -105,6 +122,7 @@ export type Event =
 
 export type EventResponse =
     | ClearApiKeyEventResponse
+    | GetAvailableModelsEventResponse
     | GetCompletionEventResponse
     | GetConversationEventResponse
     | GetSettingsEventResponse

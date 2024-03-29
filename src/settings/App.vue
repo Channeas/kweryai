@@ -10,6 +10,12 @@
             @saveApiKey="saveApiKey"
             :placeholder="placeholderApiKeyForProvider"
         />
+
+        <ModelSection
+            v-model="selectedModel"
+            @addError="addError"
+            :hasApiKeyForProvider="!!placeholderApiKeyForProvider"
+        />
     </div>
 </template>
 
@@ -24,6 +30,7 @@ import sendEvent from "@/utils/sendEvent";
 import ErrorRenderer from "@/components/ErrorRenderer.vue";
 import ProviderSection from "./sections/ProviderSection.vue";
 import ApiKeySection from "./sections/ApiKeySection.vue";
+import ModelSection from "./sections/ModelSection.vue";
 
 const errorRenderer = ref();
 
@@ -92,6 +99,16 @@ async function saveApiKey(newApiKey: string) {
     await loadSettings();
 }
 
+const selectedModel = ref<string>();
+
+watch(selectedModel, () => {
+    if (!(hasLoadedSettings.value && selectedModel.value)) {
+        return;
+    }
+
+    updateSettings({ model: selectedModel.value });
+});
+
 async function loadSettings() {
     // TODO: Remove this reset?
     hasLoadedSettings.value = false;
@@ -117,6 +134,7 @@ async function loadSettings() {
 
     selectedProviderKey.value = initialSettings.provider;
     placeholderApiKeys.value = initialSettings.obfuscatedApiKeys;
+    selectedModel.value = initialSettings.model;
 
     nextTick(() => (hasLoadedSettings.value = true));
 }
@@ -145,7 +163,7 @@ async function updateSettings(keysToUpdate: SettingsToUpdate) {
     padding: 20px;
 
     /* TODO: Remove? */
-    min-height: 400px;
+    min-height: 500px;
 }
 </style>
 

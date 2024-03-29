@@ -1,6 +1,7 @@
 import { Event, EventResponse } from "@/types/Event";
 
 import handleClearApiKey from "./handleClearApiKey";
+import handleGetAvailableModels from "./handleGetAvailableModels";
 import handleGetCompletion from "./handleGetCompletion";
 import handleGetConversation from "./handleGetConversation";
 import handleGetSettings from "./handleGetSettings";
@@ -32,6 +33,8 @@ async function routeEventToHandler(
     switch (event.type) {
         case "clearApiKey":
             return await handleClearApiKey(event);
+        case "getAvailableModels":
+            return await handleGetAvailableModels(event);
         case "getCompletion":
             return await handleGetCompletion(event);
         case "getConversation":
