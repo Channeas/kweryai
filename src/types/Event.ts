@@ -1,9 +1,23 @@
 import { Conversation } from "./Conversation";
 import { Settings, SettingsToUpdate } from "./Settings";
+import { ProviderKey } from "./Provider";
 
 export type EventStatus = {
     success: boolean;
     message?: string;
+};
+
+export type ClearApiKeyEvent = {
+    type: "clearApiKey";
+    content: {
+        provider?: ProviderKey;
+        clearAll?: boolean;
+    };
+};
+
+export type ClearApiKeyEventResponse = {
+    type: "clearApiKey";
+    status: EventStatus;
 };
 
 export type GetCompletionEvent = {
@@ -16,6 +30,7 @@ export type GetCompletionEvent = {
 
 export type GetCompletionEventResponse = {
     type: "getCompletionResponse";
+    // TODO: Directly return the completion in response?
     response: {
         completion?: string;
     };
@@ -28,6 +43,7 @@ export type GetConversationEvent = {
 
 export type GetConversationEventResponse = {
     type: "getConversationResponse";
+    // TODO: Directly return the conversation in response?
     response: {
         conversation: Conversation;
     };
@@ -79,6 +95,7 @@ export type SetSettingsEventResponse = {
 };
 
 export type Event =
+    | ClearApiKeyEvent
     | GetCompletionEvent
     | GetConversationEvent
     | GetSettingsEvent
@@ -87,6 +104,7 @@ export type Event =
     | SetSettingsEvent;
 
 export type EventResponse =
+    | ClearApiKeyEventResponse
     | GetCompletionEventResponse
     | GetConversationEventResponse
     | GetSettingsEventResponse

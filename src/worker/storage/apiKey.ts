@@ -39,6 +39,11 @@ export async function setApiKey(provider: ProviderKey, apiKey: string) {
     });
 }
 
+export async function clearSingleApiKey(provider: ProviderKey) {
+    const storageKey = createStorageKeyForProvider(provider);
+    await chrome.storage.local.remove(storageKey);
+}
+
 export async function clearAllApiKeys() {
     const storageKeys = allProviderKeys.map(createStorageKeyForProvider);
     await chrome.storage.local.remove(storageKeys);

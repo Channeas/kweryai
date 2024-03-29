@@ -1,5 +1,6 @@
 import { Event, EventResponse } from "@/types/Event";
 
+import handleClearApiKey from "./handleClearApiKey";
 import handleGetCompletion from "./handleGetCompletion";
 import handleGetConversation from "./handleGetConversation";
 import handleGetSettings from "./handleGetSettings";
@@ -29,6 +30,8 @@ async function routeEventToHandler(
     sender: chrome.runtime.MessageSender
 ): Promise<EventResponse> {
     switch (event.type) {
+        case "clearApiKey":
+            return await handleClearApiKey(event);
         case "getCompletion":
             return await handleGetCompletion(event);
         case "getConversation":
