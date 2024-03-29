@@ -7,6 +7,7 @@
             @click="isOptionsVisible = !isOptionsVisible"
             class="select-dropdown-toggle-button"
             ref="toggleDropdownButton"
+            :disabled="disabled"
         >
             {{ selectedOptionLabel }}
 
@@ -43,8 +44,9 @@ import SelectOptions from "./SelectOptions.vue";
 const props = withDefaults(
     defineProps<{
         description?: string;
-        options: SelectOption[];
+        disabled?: boolean;
         numberOfVisibleOptions?: number;
+        options: SelectOption[];
     }>(),
     { description: "Select an option" }
 );
@@ -127,6 +129,10 @@ document.addEventListener("keyup", (keyupEvent) => {
     background-color: #f3f4f6;
 }
 
+.select-dropdown-toggle-button:disabled {
+    cursor: not-allowed;
+}
+
 .select-dropdown-toggle-chevron {
     height: 20px;
     width: 20px;
@@ -143,4 +149,3 @@ document.addEventListener("keyup", (keyupEvent) => {
     rotate: 180deg;
 }
 </style>
-./types
