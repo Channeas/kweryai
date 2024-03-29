@@ -1,5 +1,6 @@
 <template>
     <div class="kwery-chat-window">
+        <ChatHeader />
         <ErrorRenderer ref="errorRenderer" />
         <ConversationRenderer :conversation="conversation" />
         <ChatInput @submit="(text) => emit('addMessage', text)" />
@@ -9,6 +10,7 @@
 <script lang="ts" setup>
 import { Conversation } from "@/types/Conversation";
 import ConversationRenderer from "./ConversationRenderer.vue";
+import ChatHeader from "./ChatHeader.vue";
 import ChatInput from "./ChatInput.vue";
 import ErrorRenderer from "@/components/ErrorRenderer.vue";
 import { ref } from "vue";
