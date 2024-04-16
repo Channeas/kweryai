@@ -2,7 +2,10 @@
     <div class="kwery-chat-window">
         <ChatHeader />
         <ErrorRenderer ref="errorRenderer" />
-        <ConversationRenderer :conversation="conversation" />
+        <ConversationRenderer
+            :conversation="conversation"
+            :isLoading="isLoading"
+        />
         <ChatInput @submit="(text) => emit('addMessage', text)" />
     </div>
 </template>
@@ -27,6 +30,9 @@ function addError(message: string) {
 // TODO: Possibly migrate the conversation prop to a model
 defineProps<{
     conversation: Conversation;
+
+    // TODO: Use a store for this
+    isLoading: boolean;
 }>();
 
 const emit = defineEmits<{

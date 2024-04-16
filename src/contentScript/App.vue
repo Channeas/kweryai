@@ -3,6 +3,7 @@
         v-if="showChat"
         @addMessage="addMessage"
         :conversation="textConversation"
+        :isLoading="isGettingCompletion"
         ref="chatWindow"
     />
 
@@ -29,6 +30,8 @@ function addError(errorMessage: string) {
     // TODO: Also update the icon to show that an error has been encountered
 }
 
+const isGettingCompletion = ref(false);
+
 async function addMessage(text: string) {
     textConversation.messages.push({
         text,
@@ -37,8 +40,12 @@ async function addMessage(text: string) {
 
     await setConversation();
 
+    isGettingCompletion.value = true;
+
     // TODO: Debounce - wait with this if a user starts typing a new message right away
     await getCompletion();
+
+    isGettingCompletion.value = false;
 }
 
 const textConversation: Conversation = reactive({
