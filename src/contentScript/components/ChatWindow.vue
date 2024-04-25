@@ -58,13 +58,13 @@ defineExpose({
     justify-content: center;
 
     position: fixed;
-    bottom: 90px;
+    bottom: 100px;
     right: 20px;
     width: 350px;
     height: 450px;
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.25);
-    z-index: 1000000000000000000000000000000000000000000000000000000000000000000000000;
+    z-index: 2147483647;
 }
 </style>
