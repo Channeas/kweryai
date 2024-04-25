@@ -7,6 +7,7 @@
                 ref="inputField"
                 class="kwery-chat-input-field"
                 placeholder="Ask away..."
+                autocomplete="off"
             />
             <button
                 :disabled="!messageHasContent"
