@@ -76,6 +76,15 @@ export type GetSettingsEventResponse = {
     status: EventStatus;
 };
 
+export type OpenSettingsPageEvent = {
+    type: "openSettingsPage";
+};
+
+export type OpenSettingsPageEventResponse = {
+    type: "openSettingsPageResponse";
+    status: EventStatus;
+};
+
 export type SetApiKeyEvent = {
     type: "setApiKey";
     content: {
@@ -116,6 +125,7 @@ export type Event =
     | GetCompletionEvent
     | GetConversationEvent
     | GetSettingsEvent
+    | OpenSettingsPageEvent
     | SetApiKeyEvent
     | SetConversationEvent
     | SetSettingsEvent;
@@ -126,6 +136,7 @@ export type EventResponse =
     | GetCompletionEventResponse
     | GetConversationEventResponse
     | GetSettingsEventResponse
+    | OpenSettingsPageEventResponse
     | SetApiKeyEventResponse
     | SetConversationEventResponse
     | SetSettingsEventResponse;
