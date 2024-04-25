@@ -1,6 +1,6 @@
 {
     "name": "kweryai",
-    "description": "AI Q&A browser extension",
+    "description": "AI Q&A extension - Ask questions on any page",
     "version": "0.0.1",
     "author": {
         "name": "Johannes Idarsson",

@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "action": {
         "default_popup": "popup.html",
-        "default_title": "Extension popup"
+        "default_title": "Kwery AI - Ask questions on any page"
     },
     "background": {
         "service_worker": "js/worker.js"
