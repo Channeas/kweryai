@@ -58,7 +58,12 @@ defineProps<{
 
 .kwery-primary-button:hover:not([disabled]) {
     /* TODO: Rework colors */
-    background-color: #2a8bff;
+    background-color: #107dff;
+}
+
+.kwery-primary-button:active:not([disabled]) {
+    /* TODO: Rework colors */
+    background-color: #0064dc;
 }
 
 .kwery-danger-button {
@@ -69,6 +74,11 @@ defineProps<{
 
 .kwery-danger-button:hover:not([disabled]) {
     /* TODO: Rework colors */
-    background-color: #dc2626;
+    background-color: #eb1515;
+}
+
+.kwery-danger-button:active:not([disabled]) {
+    /* TODO: Rework colors */
+    background-color: #bd1010;
 }
 </style>
