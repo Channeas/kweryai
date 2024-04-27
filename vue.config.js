@@ -48,6 +48,9 @@ const pages = {
 
 module.exports = defineConfig({
     configureWebpack,
+    css: {
+        extract: false
+    },
     filenameHashing: false,
     pages,
     transpileDependencies: true,
