@@ -1,6 +1,6 @@
 <template>
     <div class="kwery-settings-model-section">
-        <label>AI model</label>
+        <label>AI model (loaded dynamically, some will not work)</label>
 
         <SelectDropdown
             v-model="selectedModelOption"
