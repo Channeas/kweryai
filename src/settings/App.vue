@@ -16,6 +16,13 @@
             @addError="addError"
             :hasApiKeyForProvider="!!placeholderApiKeyForProvider"
         />
+
+        <p>
+            Unsure what to do? Check out
+            <a :href="welcomePageUrl" target="_blank"
+                >this page for instructions</a
+            >
+        </p>
     </div>
 </template>
 
@@ -147,6 +154,8 @@ async function updateSettings(keysToUpdate: SettingsToUpdate) {
         content: keysToUpdate
     });
 }
+
+const welcomePageUrl = ref(chrome.runtime.getURL("welcome.html"));
 </script>
 
 <style>
