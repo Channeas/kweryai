@@ -84,7 +84,13 @@ watch(
 </script>
 
 <style scoped>
-label {
+.kwery-settings-model-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.kwery-settings-model-section label {
     font-size: 14px;
 }
 </style>
