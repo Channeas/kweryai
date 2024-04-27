@@ -49,7 +49,7 @@ const pages = {
 module.exports = defineConfig({
     configureWebpack,
     css: {
-        extract: false
+        extract: true
     },
     filenameHashing: false,
     pages,

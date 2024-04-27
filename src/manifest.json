@@ -20,7 +20,7 @@
     "permissions": ["activeTab", "scripting", "storage"],
     "web_accessible_resources": [
         {
-            "resources": ["icons/kweryai64.png"],
+            "resources": ["icons/kweryai64.png", "css/script.css"],
             "matches": ["<all_urls>"],
             "use_dynamic_url": true
         }
