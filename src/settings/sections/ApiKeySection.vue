@@ -61,7 +61,7 @@ function handleClear() {
 .kwery-settings-api-key-section {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--kwery-whitespace-small);
 }
 
 label {
@@ -70,8 +70,8 @@ label {
 
 .kwery-settings-api-key-buttons {
     display: flex;
-    gap: 16px;
-    padding-top: 8px;
+    gap: var(--kwery-whitespace-large);
+    padding-top: var(--kwery-whitespace-small);
 }
 
 .kwery-settings-api-key-buttons button {

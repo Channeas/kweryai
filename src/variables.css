@@ -1,0 +1,32 @@
+:root,
+.kwery-root {
+    --kwery-color-primary: #2a8bff;
+    --kwery-color-primary-shade-1: #0070f6;
+    --kwery-color-primary-shade-2: #0059c3;
+    --kwery-color-primary-light-1: #4499ff;
+    --kwery-color-primary-light-2: #5ea7ff;
+
+    --kwery-color-red: #ff1c11;
+    --kwery-color-red-shade-1: #dd0a00;
+    --kwery-color-red-shade-2: #aa0800;
+
+    --kwery-color-text-primary: #2c3e50;
+    --kwery-color-text-opposite: #fff;
+
+    --kwery-color-background-primary: #fff;
+
+    /* Tailwind shadow */
+    --kwery-shadow-1: 0 1px 3px 0 #0000001a, 0 1px 2px -1px #0000001a;
+
+    --kwery-border: 1px solid #d1d5db;
+    --kwery-border-radius-small: 3px;
+    --kwery-border-radius-medium: 5px;
+
+    --kwery-transition: 0.3s;
+
+    --kwery-whitespace-tiny: 4px;
+    --kwery-whitespace-small: 8px;
+    --kwery-whitespace-medium: 12px;
+    --kwery-whitespace-large: 16px;
+    --kwery-whitespace-huge: 32px;
+}

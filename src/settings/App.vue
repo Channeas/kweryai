@@ -159,24 +159,31 @@ const welcomePageUrl = ref(chrome.runtime.getURL("welcome.html"));
 </script>
 
 <style>
+body {
+    margin: 0;
+}
+
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #2c3e50;
+    background-color: var(--kwery-color-background-primary);
+    color: var(--kwery-color-text-primary);
     height: 100%;
     box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: var(--kwery-whitespace-huge);
 
     /* TODO: Remove? */
     min-height: 500px;
 }
 </style>
 
-<style scoped>
+<style>
+@import "../variables.css";
+
 .kwery-settings {
     width: 100%;
     display: flex;

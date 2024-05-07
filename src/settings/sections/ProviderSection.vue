@@ -70,7 +70,7 @@ watch(selectedProviderOption, () => {
 .kwery-settings-provider-section {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--kwery-whitespace-small);
 }
 
 label {

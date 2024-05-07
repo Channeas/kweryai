@@ -41,40 +41,25 @@ function openSettings() {
 <style>
 .kwery-start-button-container {
     text-align: center;
-    margin: 18px 0;
+    margin: var(--kwery-whitespace-large) 0;
 }
 
 .kwery-start-configure-button {
     font-size: 16px;
-    padding: 12px 16px;
+    padding: var(--kwery-whitespace-medium);
     cursor: pointer;
-
-    /* TODO: Add universal transition */
-    transition: 0.3s;
-
-    /* Tailwind shadow */
-    box-shadow:
-        0 1px 3px 0 #0000001a,
-        0 1px 2px -1px #0000001a;
-
-    /* TODO: Standardize */
-    border-radius: 3px;
-
-    /* TODO: Rework colors */
-    background-color: #fff;
-    border: 1px solid #d1d5db;
-
-    /* TODO: Rework colors */
-    background-color: #4399ff;
-    color: #fff;
+    transition: var(--kwery-transition);
+    background-color: var(--kwery-color-primary);
+    border: var(--kwery-border);
+    border-radius: var(--kwery-border-radius-small);
+    box-shadow: var(--kwery-shadow-1);
+    color: var(--kwery-color-text-opposite);
 }
 
 .kwery-start-configure-button:hover {
-    /* TODO: Rework colors */
-    background-color: #107dff;
+    background-color: var(--kwery-color-primary-shade-1);
 }
 .kwery-start-configure-button:active {
-    /* TODO: Rework colors */
-    background-color: #0064dc;
+    background-color: var(--kwery-color-primary-shade-2);
 }
 </style>

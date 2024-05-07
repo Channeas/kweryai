@@ -87,7 +87,7 @@ watch(
 .kwery-settings-model-section {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: var(--kwery-whitespace-small);
 }
 
 .kwery-settings-model-section label {

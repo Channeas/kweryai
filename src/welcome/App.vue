@@ -17,10 +17,21 @@ window.document.title = "Welcome to Kwery AI!";
 </script>
 
 <style>
+@import "../variables.css";
+
+#app {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    background-color: var(--kwery-color-background-primary);
+    color: var(--kwery-color-text-primary);
+}
+
 .kwery-welcome-container {
     max-width: 600px;
     margin: auto;
-    padding: 30px;
+    padding: var(--kwery-whitespace-huge);
 }
 
 .kwery-welcome-container h1,
@@ -30,11 +41,11 @@ window.document.title = "Welcome to Kwery AI!";
 
 .kwery-welcome-container p {
     font-size: 16px;
-    margin: 12px 0;
+    margin: var(--kwery-whitespace-medium) 0;
 }
 
 .kwery-welcome-container li {
-    font-size: 16px;
+    font-size: var(--kwery-whitespace-large);
 }
 
 .kwery-welcome-content {
