@@ -46,35 +46,26 @@ const maxHeight = computed(() => {
     width: calc(100% - 2px);
     position: absolute;
     overflow-y: auto;
-
-    /* Tailwind shadow */
-    box-shadow:
-        0 1px 3px 0 #0000001a,
-        0 1px 2px -1px #0000001a;
-
-    /* TODO: Rework colors */
-    background-color: #fff;
-    border: 1px solid #d1d5db;
+    box-shadow: var(--kwery-shadow-1);
+    background-color: var(--kwery-color-background-primary);
+    border: var(--kwery-border);
 }
 
 .select-options-container,
 .select-option:last-child {
     /* TODO: Standardize */
-    border-radius: 0 0 3px 3px;
+    border-radius: 0 0 var(--kwery-border-radius-small)
+        var(--kwery-border-radius-small);
 }
 
 .select-option {
     width: 100%;
     border: none;
-    padding: 8px;
+    padding: var(--kwery-whitespace-small);
     text-align: left;
     cursor: pointer;
-
-    /* TODO: Rework colors */
-    background-color: #fff;
-
-    /* TODO: Add universal transition */
-    transition: 0.1s;
+    background-color: var(--kwery-color-background-primary);
+    transition: var(--kwery-transition-fast);
 }
 
 .select-option-hightlighted {
@@ -87,4 +78,3 @@ const maxHeight = computed(() => {
     background-color: #f3f4f6;
 }
 </style>
-./types

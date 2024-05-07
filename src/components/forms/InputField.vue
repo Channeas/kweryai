@@ -20,18 +20,10 @@ defineProps<{
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    padding: 8px;
-
-    /* Tailwind shadow */
-    box-shadow:
-        0 1px 3px 0 #0000001a,
-        0 1px 2px -1px #0000001a;
-
-    /* TODO: Standardize */
-    border-radius: 3px;
-
-    /* TODO: Rework colors */
-    background-color: #fff;
-    border: 1px solid #d1d5db;
+    padding: var(--kwery-whitespace-small);
+    background-color: var(--kwery-color-background-primary);
+    box-shadow: var(--kwery-shadow-1);
+    border: var(--kwery-border);
+    border-radius: var(--kwery-border-radius-small);
 }
 </style>

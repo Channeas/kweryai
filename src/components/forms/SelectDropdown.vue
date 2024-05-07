@@ -101,28 +101,18 @@ document.addEventListener("keyup", (keyupEvent) => {
 
 .select-dropdown-toggle-button {
     width: 100%;
-    padding: 8px;
+    padding: var(--kwery-whitespace-small);
     text-align: left;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
     user-select: none;
-
-    /* Tailwind shadow */
-    box-shadow:
-        0 1px 3px 0 #0000001a,
-        0 1px 2px -1px #0000001a;
-
-    /* TODO: Standardize */
-    border-radius: 3px;
-
-    /* TODO: Rework colors */
-    background-color: #fff;
-    border: 1px solid #d1d5db;
-
-    /* TODO: Add universal transition */
-    transition: 0.3s;
+    background-color: var(--kwery-color-background-primary);
+    box-shadow: var(--kwery-shadow-1);
+    border: var(--kwery-border);
+    border-radius: var(--kwery-border-radius-small);
+    transition: var(--kwery-transition);
 }
 
 .select-dropdown-toggle-button:hover {
@@ -138,12 +128,10 @@ document.addEventListener("keyup", (keyupEvent) => {
     height: 20px;
     width: 20px;
     pointer-events: none;
+    transition: var(--kwery-transition);
 
     /* TODO: Rework colors */
     color: #9ca3af;
-
-    /* TODO: Add universal transition */
-    transition: 0.3s;
 }
 
 .select-dropdown-open .select-dropdown-toggle-chevron {

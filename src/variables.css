@@ -23,6 +23,7 @@
     --kwery-border-radius-medium: 5px;
 
     --kwery-transition: 0.3s;
+    --kwery-transition-fast: 0.1s;
 
     --kwery-whitespace-tiny: 4px;
     --kwery-whitespace-small: 8px;

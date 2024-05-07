@@ -27,23 +27,13 @@ defineProps<{
 
 <style scoped>
 .kwery-standard-button {
-    padding: 8px;
     cursor: pointer;
-
-    /* TODO: Add universal transition */
-    transition: 0.3s;
-
-    /* Tailwind shadow */
-    box-shadow:
-        0 1px 3px 0 #0000001a,
-        0 1px 2px -1px #0000001a;
-
-    /* TODO: Standardize */
-    border-radius: 3px;
-
-    /* TODO: Rework colors */
-    background-color: #fff;
-    border: 1px solid #d1d5db;
+    padding: var(--kwery-whitespace-small);
+    transition: var(--kwery-transition);
+    background-color: var(--kwery-color-background-primary);
+    border-radius: var(--kwery-border-radius-small);
+    border: var(--kwery-border);
+    box-shadow: var(--kwery-shadow-1);
 }
 
 .kwery-standard-button:disabled {
@@ -51,34 +41,28 @@ defineProps<{
 }
 
 .kwery-primary-button {
-    /* TODO: Rework colors */
-    background-color: #4399ff;
-    color: #fff;
+    background-color: var(--kwery-color-primary);
+    color: var(--kwery-color-text-opposite);
 }
 
 .kwery-primary-button:hover:not([disabled]) {
-    /* TODO: Rework colors */
-    background-color: #107dff;
+    background-color: var(--kwery-color-primary-shade-1);
 }
 
 .kwery-primary-button:active:not([disabled]) {
-    /* TODO: Rework colors */
-    background-color: #0064dc;
+    background-color: var(--kwery-color-primary-shade-2);
 }
 
 .kwery-danger-button {
-    /* TODO: Rework colors */
-    background-color: #ef4444;
-    color: #fff;
+    background-color: var(--kwery-color-red);
+    color: var(--kwery-color-text-opposite);
 }
 
 .kwery-danger-button:hover:not([disabled]) {
-    /* TODO: Rework colors */
-    background-color: #eb1515;
+    background-color: var(--kwery-color-red-shade-1);
 }
 
 .kwery-danger-button:active:not([disabled]) {
-    /* TODO: Rework colors */
-    background-color: #bd1010;
+    background-color: var(--kwery-color-red-shade-2);
 }
 </style>
