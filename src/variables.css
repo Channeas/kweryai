@@ -9,11 +9,16 @@
     --kwery-color-red: #ff1c11;
     --kwery-color-red-shade-1: #dd0a00;
     --kwery-color-red-shade-2: #aa0800;
+    --kwery-color-red-shade-light-1: #ff4d44;
+    --kwery-color-red-shade-light-2: #ff7e77;
 
     --kwery-color-text-primary: #2c3e50;
     --kwery-color-text-opposite: #fff;
 
     --kwery-color-background-primary: #fff;
+    --kwery-color-background-gray: #f3f4f6;
+    --kwery-color-background-red: #fef2f2;
+    --kwery-color-background-red-shade-1: #fcdada;
 
     /* Tailwind shadow */
     --kwery-shadow-1: 0 1px 3px 0 #0000001a, 0 1px 2px -1px #0000001a;
