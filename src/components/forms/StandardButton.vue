@@ -38,6 +38,7 @@ defineProps<{
 
 .kwery-standard-button:disabled {
     opacity: 0.5;
+    cursor: default;
 }
 
 .kwery-primary-button {
