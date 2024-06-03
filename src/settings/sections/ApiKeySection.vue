@@ -64,10 +64,6 @@ function handleClear() {
     gap: var(--kwery-whitespace-small);
 }
 
-label {
-    font-size: 14px;
-}
-
 .kwery-settings-api-key-buttons {
     display: flex;
     gap: var(--kwery-whitespace-large);

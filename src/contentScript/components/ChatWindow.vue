@@ -46,7 +46,7 @@ defineExpose({
 
 <style scoped>
 .kwery-chat-window {
-    font-size: 14px;
+    font-size: var(--kwery-font-size);
     font-family: Avenir, Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;

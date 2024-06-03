@@ -17,6 +17,8 @@
 
     --kwery-color-background-primary: #fff;
     --kwery-color-background-gray: #f3f4f6;
+    --kwery-color-background-gray-shade-1: #eceeed;
+    --kwery-color-background-blue: #ddecff;
     --kwery-color-background-red: #fef2f2;
     --kwery-color-background-red-shade-1: #fcdada;
 
@@ -35,4 +37,6 @@
     --kwery-whitespace-medium: 12px;
     --kwery-whitespace-large: 16px;
     --kwery-whitespace-huge: 32px;
+
+    --kwery-font-size: 14px;
 }

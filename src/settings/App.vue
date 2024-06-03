@@ -17,7 +17,7 @@
             :hasApiKeyForProvider="!!placeholderApiKeyForProvider"
         />
 
-        <p>
+        <p class="kwery-settings-help">
             Unsure what to do? Check out
             <a :href="welcomePageUrl" target="_blank"
                 >this page for instructions</a
@@ -189,5 +189,10 @@ body {
     display: flex;
     flex-direction: column;
     gap: 24px;
+    font-size: var(--kwery-font-size);
+}
+
+.kwery-settings-help {
+    font-size: 12px;
 }
 </style>

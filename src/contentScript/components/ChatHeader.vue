@@ -49,7 +49,7 @@ function openSettings() {
 
 .kwery-chat-header-title {
     margin: 0;
-    font-size: 14px;
+    font-size: var(--kwery-font-size);
     font-weight: 700;
 }
 

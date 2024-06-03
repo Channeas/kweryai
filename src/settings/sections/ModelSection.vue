@@ -89,8 +89,4 @@ watch(
     flex-direction: column;
     gap: var(--kwery-whitespace-small);
 }
-
-.kwery-settings-model-section label {
-    font-size: 14px;
-}
 </style>

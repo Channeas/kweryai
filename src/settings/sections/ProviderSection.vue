@@ -72,8 +72,4 @@ watch(selectedProviderOption, () => {
     flex-direction: column;
     gap: var(--kwery-whitespace-small);
 }
-
-label {
-    font-size: 14px;
-}
 </style>
