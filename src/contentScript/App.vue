@@ -103,6 +103,7 @@ async function getCompletion() {
 getConversation();
 </script>
 
-<style scoped>
+<style>
 /* TODO: Add inter? */
+@import "../variables.css";
 </style>

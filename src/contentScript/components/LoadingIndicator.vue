@@ -11,8 +11,8 @@
 <style>
 .kwery-loading-indicator {
     display: flex;
-    gap: 4px;
-    margin-top: 16px;
+    gap: var(--kwery-whitespace-tiny);
+    margin-top: var(--kwery-whitespace-large);
 }
 
 .kwery-loading-indicator-dot {
@@ -21,9 +21,7 @@
     border-radius: 10000px;
     opacity: 0.4;
     animation: loading-pulse 1.25s infinite;
-
-    /* TODO: Rework colors */
-    background-color: #4399ff;
+    background-color: var(--kwery-color-primary);
 }
 
 .kwery-loading-indicator-dot:nth-child(2) {

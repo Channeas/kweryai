@@ -51,7 +51,7 @@ defineExpose({
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    color: var(--kwery-color-text-primary);
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
@@ -62,8 +62,8 @@ defineExpose({
     right: 20px;
     width: 350px;
     height: 450px;
-    background-color: #fff;
-    border-radius: 5px;
+    background-color: var(--kwery-color-background-primary);
+    border-radius: var(--kwery-border-radius-medium);
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.25);
     z-index: 2147483647;
 }

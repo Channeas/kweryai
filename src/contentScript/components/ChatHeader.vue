@@ -35,19 +35,16 @@ function openSettings() {
 
 <style scoped>
 .kwery-chat-header {
-    color: #fff;
-    padding: 12px;
+    color: var(--kwery-color-text-opposite);
+    padding: var(--kwery-whitespace-medium);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 42px;
     box-sizing: border-box;
-
-    /* TODO: Use variable */
-    background-color: #4399ff;
-
-    /* TODO: Use variable */
-    border-radius: 5px 5px 0 0;
+    background-color: var(--kwery-color-primary);
+    border-radius: var(--kwery-border-radius-medium)
+        var(--kwery-border-radius-medium) 0 0;
 }
 
 .kwery-chat-header-title {
@@ -59,25 +56,24 @@ function openSettings() {
 .kwery-chat-header-settings-button {
     border: 0;
     margin: 0;
-    padding: 4px;
+    padding: var(--kwery-whitespace-tiny);
     background-color: transparent;
-    color: #fff;
+    color: var(--kwery-color-text-opposite);
     position: absolute;
-    right: 20px;
+    right: var(--kwery-whitespace-large);
     height: 28px;
     width: 28px;
     cursor: pointer;
-
-    /* TODO: Use variable */
-    border-radius: 3px;
-
-    /* TODO: Add universal transition */
-    transition: 0.3s;
+    border-radius: var(--kwery-border-radius-small);
+    transition: var(--kwery-transition);
 }
 
 .kwery-chat-header-settings-button:hover {
-    /* TODO: Use variable */
-    background-color: #5da7ff;
+    background-color: var(--kwery-color-primary-light-1);
+}
+
+.kwery-chat-header-settings-button:active {
+    background-color: var(--kwery-color-primary-light-2);
 }
 
 .kwery-chat-header-settings-icon {

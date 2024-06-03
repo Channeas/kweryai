@@ -34,7 +34,7 @@ defineProps<{
 <style scoped>
 .kwery-conversation-message-container {
     display: flex;
-    margin: 16px 0;
+    margin: var(--kwery-whitespace-large) 0;
 }
 
 .kwery-message-align-left {
@@ -53,11 +53,11 @@ defineProps<{
 }
 
 .kwery-message-cluster-with-above {
-    margin-top: 8px;
+    margin-top: var(--kwery-whitespace-small);
 }
 
 .kwery-message-cluster-with-below {
-    margin-bottom: 8px;
+    margin-bottom: var(--kwery-whitespace-small);
 }
 
 .kwery-conversation-message {
@@ -65,20 +65,15 @@ defineProps<{
     max-width: 85%;
     text-align: left;
     margin: 0 !important;
-    padding: 8px;
-    border-radius: 4px;
+    padding: var(--kwery-whitespace-small);
+    border-radius: var(--kwery-whitespace-tiny);
     word-break: break-word;
     line-height: 1.5;
-    /* TODO: Set this using a variable */
-    font-size: 14px;
-
-    /* TODO: Rework colors */
-    background-color: #eceeed;
+    background-color: var(--kwery-color-background-gray-shade-1);
 }
 
 .kwery-message-from-user {
-    /* TODO: Rework colors */
-    background-color: #4399ff;
-    color: #fff;
+    background-color: var(--kwery-color-primary);
+    color: var(--kwery-color-text-opposite);
 }
 </style>

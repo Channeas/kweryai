@@ -1,5 +1,9 @@
 <template>
-    <button @click="changeToggleValue" class="kwery-chat-toggle" tabindex="0">
+    <button
+        @click="changeToggleValue"
+        class="kwery-chat-toggle kwery-root"
+        tabindex="0"
+    >
         <img v-if="iconURL" :src="iconURL" />
         <div class="kwery-shadow-container"></div>
     </button>
@@ -31,9 +35,7 @@ const iconURL = ref(chrome.runtime.getURL("icons/kweryai64.png"));
     z-index: 2147483645;
     border: none !important;
     background-color: transparent !important;
-
-    /* TODO: Add universal transition */
-    transition: 0.3s;
+    transition: var(--kwery-transition);
 }
 
 .kwery-chat-toggle:hover {

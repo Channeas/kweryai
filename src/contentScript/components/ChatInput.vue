@@ -64,16 +64,14 @@ function handleSubmit() {
 }
 
 .kwery-chat-input-field {
-    /* TODO: Consistency */
-    padding: 20px;
+    padding: var(--kwery-whitespace-large);
     padding-right: 50px;
 
-    /* TODO: Use variables */
-    border-radius: 0 0 5px 5px;
+    border-radius: 0 0 var(--kwery-border-radius-medium)
+        var(--kwery-border-radius-medium);
 
-    /* TODO: Rework colors */
-    background-color: #f5f5f5;
-    color: #2c3e50 !important;
+    background-color: var(--kwery-color-background-gray);
+    color: var(--kwery-color-text-primary) !important;
 
     width: 100%;
     outline: none;
@@ -81,13 +79,7 @@ function handleSubmit() {
     margin: 0 !important;
 }
 
-.kwery-chat-input-field::placeholder {
-    /* TODO: Rework colors */
-    color: #4f6f8f !important;
-}
-
 .kwery-chat-input-submit-button {
-    border: none;
     position: absolute;
     right: 16px;
     padding: 4px;
@@ -95,30 +87,26 @@ function handleSubmit() {
     width: 28px;
     background-color: transparent !important;
     cursor: pointer;
-
-    /* TODO: Use variable */
-    border-radius: 3px;
-
-    /* TODO: Add universal transition */
-    transition: 0.3s;
+    border: none;
+    border-radius: var(--kwery-border-radius-small);
+    transition: var(--kwery-transition);
 }
 
 .kwery-chat-input-submit-button:hover:not([disabled]) {
-    background-color: #ddecff !important;
+    background-color: var(--kwery-color-background-blue) !important;
 }
 
 .kwery-chat-input-submit-icon {
     height: 20px;
     width: 20px;
 
-    /* TODO: Rework colors */
-    color: #4399ff;
-
-    /* TODO: Add universal transition */
-    transition: 0.3s;
+    color: var(--kwery-color-primary);
+    transition: var(--kwery-transition);
 }
 
-.kwery-chat-input-submit-button:disabled .kwery-chat-input-submit-icon {
+.kwery-chat-input-field:disabled,
+.kwery-chat-input-submit-button:disabled {
     opacity: 0.5;
+    cursor: default;
 }
 </style>
