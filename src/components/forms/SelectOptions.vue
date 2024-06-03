@@ -66,15 +66,14 @@ const maxHeight = computed(() => {
     cursor: pointer;
     background-color: var(--kwery-color-background-primary);
     transition: var(--kwery-transition-fast);
+    color: var(--kwery-color-text-primary);
 }
 
 .select-option-hightlighted {
-    /* TODO: Rework colors - make this darker? */
-    background-color: #f3f4f6;
+    background-color: var(--kwery-color-background-gray);
 }
 
 .select-option:hover {
-    /* TODO: Rework colors */
-    background-color: #f3f4f6;
+    background-color: var(--kwery-color-background-gray);
 }
 </style>

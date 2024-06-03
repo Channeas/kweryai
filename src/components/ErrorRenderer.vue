@@ -69,14 +69,13 @@ defineExpose({ addError });
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
-    gap: 10px;
+    padding: var(--kwery-whitespace-large);
+    gap: var(--kwery-whitespace-medium);
 
-    /* TODO: Use variable */
-    border-radius: 5px 5px 0 0;
+    border-radius: var(--kwery-border-radius-medium)
+        var(--kwery-border-radius-medium) 0 0;
 
-    /* TODO: Rework colors */
-    background-color: #fef2f2;
+    background-color: var(--kwery-color-background-red);
 }
 
 .kwery-error-renderer-absolute {
@@ -89,51 +88,42 @@ defineExpose({ addError });
 .kwery-error-renderer-left {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: var(--kwery-whitespace-medium);
 }
 
 .kwery-error-renderer-message {
     text-align: left;
     margin: 0;
 
-    /* TODO: Set this using a variable */
-    font-size: 14px;
-
     /* TODO: Rework */
     line-height: 1.3;
 
-    /* TODO: Rework colors */
-    color: #991b1b;
+    color: var(--kwery-color-red-shade-1);
 }
 
 .kwery-error-renderer-remove-button {
     height: 28px;
     width: 28px;
-    padding: 4px;
+    padding: var(--kwery-whitespace-tiny);
     border: none;
+    border-radius: var(--kwery-border-radius-small);
     background-color: transparent;
     cursor: pointer;
-
-    /* TODO: Use variable */
-    border-radius: 3px;
-
-    /* TODO: Add universal transition */
-    transition: 0.3s;
+    transition: var(--kwery-transition);
 }
 
 .kwery-error-renderer-remove-button:hover {
-    /* TODO: Rework colors */
-    background-color: #fcdada;
+    background-color: var(--kwery-color-background-red-shade-1);
 }
 
 .kwery-error-renderer-icon-container {
     height: 20px;
-    widows: 20px;
+    width: 20px;
 }
 
 .kwery-error-renderer-icon {
     height: 20px;
     width: 20px;
-    color: #f87171;
+    color: var(--kwery-color-red-shade-light-2);
 }
 </style>

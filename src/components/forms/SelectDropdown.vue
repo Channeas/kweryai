@@ -113,11 +113,11 @@ document.addEventListener("keyup", (keyupEvent) => {
     border: var(--kwery-border);
     border-radius: var(--kwery-border-radius-small);
     transition: var(--kwery-transition);
+    color: var(--kwery-color-text-primary);
 }
 
 .select-dropdown-toggle-button:hover {
-    /* TODO: Rework colors */
-    background-color: #f3f4f6;
+    background-color: var(--kwery-color-background-gray);
 }
 
 .select-dropdown-toggle-button:disabled {
@@ -129,9 +129,6 @@ document.addEventListener("keyup", (keyupEvent) => {
     width: 20px;
     pointer-events: none;
     transition: var(--kwery-transition);
-
-    /* TODO: Rework colors */
-    color: #9ca3af;
 }
 
 .select-dropdown-open .select-dropdown-toggle-chevron {
