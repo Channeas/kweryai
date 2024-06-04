@@ -2,7 +2,7 @@ import { OpenSettingsPageEventResponse, EventStatus } from "@/types/Event";
 
 import getErrorAsString from "@/utils/getErrorAsString";
 
-export default async function handleClearApiKey(): Promise<OpenSettingsPageEventResponse> {
+export default async function handleOpenSettingsPage(): Promise<OpenSettingsPageEventResponse> {
     const status: EventStatus = {
         success: false
     };

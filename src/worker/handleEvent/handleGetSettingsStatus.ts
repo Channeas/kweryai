@@ -5,7 +5,7 @@ import getErrorAsString from "@/utils/getErrorAsString";
 import { getSelectedProvider } from "@/worker/storage/selectedProvider";
 import { getObfuscatedApiKeys } from "@/worker/storage/apiKey";
 
-export default async function handleGetSettings(): Promise<GetSettingsStatusEventResponse> {
+export default async function handleGetSettingsStatus(): Promise<GetSettingsStatusEventResponse> {
     const status: EventStatus = {
         success: false
     };
