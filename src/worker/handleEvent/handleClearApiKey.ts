@@ -41,7 +41,7 @@ export default async function handleClearApiKey(
     }
 
     return {
-        type: "clearApiKey",
+        type: "clearApiKeyResponse",
         status
     };
 }

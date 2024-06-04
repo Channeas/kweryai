@@ -16,7 +16,7 @@ export type ClearApiKeyEvent = {
 };
 
 export type ClearApiKeyEventResponse = {
-    type: "clearApiKey";
+    type: "clearApiKeyResponse";
     status: EventStatus;
 };
 
@@ -29,7 +29,7 @@ export type GetAvailableModelsEvent = {
 };
 
 export type GetAvailableModelsEventResponse = {
-    type: "getAvailableModels";
+    type: "getAvailableModelsResponse";
     status: EventStatus;
     response?: {
         models: string[];

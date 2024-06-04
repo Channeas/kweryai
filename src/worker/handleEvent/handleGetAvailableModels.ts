@@ -17,7 +17,7 @@ export default async function handleGetAvailableModels(
     const requestedProvider = event.content?.provider;
 
     const eventResponse: GetAvailableModelsEventResponse = {
-        type: "getAvailableModels",
+        type: "getAvailableModelsResponse",
         status
     };
 

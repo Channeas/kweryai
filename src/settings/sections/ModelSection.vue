@@ -53,7 +53,7 @@ async function getAvailableModels() {
     });
 
     const defaultErrorMessage = "Unable to load available models";
-    if (response.type !== "getAvailableModels") {
+    if (response.type !== "getAvailableModelsResponse") {
         emit("addError", defaultErrorMessage);
         return;
     }
