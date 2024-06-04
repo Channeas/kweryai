@@ -46,7 +46,7 @@ function openSettings() {
 
 .kwery-start-configure-button {
     font-size: 16px;
-    padding: var(--kwery-whitespace-medium);
+    padding: var(--kwery-button-whitespace);
     cursor: pointer;
     transition: var(--kwery-transition);
     background-color: var(--kwery-color-primary);

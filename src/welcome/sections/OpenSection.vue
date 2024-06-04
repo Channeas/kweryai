@@ -1,7 +1,7 @@
 <template>
     <SectionContainer>
-        <h2>How do I open the Kwery AI chat?</h2>
-        <p>There are four different ways to open the Kwery AI chat.</p>
+        <h2>How do I open the Kwery AI chat window?</h2>
+        <p>There are four different ways to open the Kwery AI chat window.</p>
         <p>
             The simplest is to click the Kwery AI extension icon (the robot
             shown above). To see the extension icon, you first have to click the
@@ -13,7 +13,7 @@
         <p>The other ways are:</p>
 
         <ul>
-            <li>Right click on any page, and click “Open Kwery AI”</li>
+            <li>Right click on almost any page, and click “Open Kwery AI”</li>
             <li>Use the shortcut, which is ctrl + q or cmd + q by default</li>
             <li>
                 Start typing “Kwery” in the address bar (omnibox) at the top of
