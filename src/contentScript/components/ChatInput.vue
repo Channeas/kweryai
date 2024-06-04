@@ -8,9 +8,10 @@
                 class="kwery-chat-input-field"
                 placeholder="Ask away..."
                 autocomplete="off"
+                :disabled="inputDisabled"
             />
             <button
-                :disabled="!messageHasContent"
+                :disabled="!messageHasContent || inputDisabled"
                 type="submit"
                 class="kwery-chat-input-submit-button"
             >
@@ -35,6 +36,10 @@
 
 <script lang="ts" setup>
 import { computed, ref } from "vue";
+
+defineProps<{
+    inputDisabled: boolean;
+}>();
 
 const emit = defineEmits<{
     submit: [text: string];

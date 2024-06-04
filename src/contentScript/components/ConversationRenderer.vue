@@ -61,7 +61,7 @@ watch(refs.isLoading, (isLoading) => isLoading && jumpToBottomAfterNextTick());
 <style scoped>
 .kwery-conversation-renderer {
     overflow-y: auto;
-    padding: 20px;
+    padding: var(--kwery-whitespace-large);
     flex: 1;
 }
 </style>

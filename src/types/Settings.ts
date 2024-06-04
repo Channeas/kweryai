@@ -9,3 +9,7 @@ export type Settings = {
 };
 
 export type SettingsToUpdate = Partial<Settings>;
+
+export type SettingsStatus = {
+    hasCompletedSetup: boolean;
+};

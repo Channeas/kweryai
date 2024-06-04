@@ -4,6 +4,7 @@
         @addMessage="addMessage"
         :conversation="textConversation"
         :isLoading="isGettingCompletion"
+        :hasCompletedSetup="hasCompletedSetup"
         ref="chatWindow"
     />
 
@@ -66,6 +67,27 @@ async function setConversation() {
     });
 }
 
+const hasCompletedSetup = ref(true);
+
+async function getSettingsStatus() {
+    const returnedEvent = await sendEvent({ type: "getSettingsStatus" });
+
+    if (
+        returnedEvent.type !== "getSettingsStatusResponse" ||
+        !returnedEvent.status.success
+    ) {
+        addError(
+            returnedEvent.status.message ||
+                "Unable to get the settings status. If you have not configured the extension, please click the cog icon at the top of this chat window"
+        );
+        return;
+    }
+
+    if (!returnedEvent.response?.hasCompletedSetup) {
+        hasCompletedSetup.value = false;
+    }
+}
+
 async function getCompletion() {
     const returnedEvent = await sendEvent({
         type: "getCompletion",
@@ -101,6 +123,7 @@ async function getCompletion() {
 }
 
 getConversation();
+getSettingsStatus();
 </script>
 
 <style>

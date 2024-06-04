@@ -7,7 +7,8 @@
             'kwery-message-no-top-margin': noTopMargin,
             'kwery-message-no-bottom-margin': noBottomMargin,
             'kwery-message-cluster-with-above': shouldClusterWithAbove,
-            'kwery-message-cluster-with-below': shouldClusterWithBelow
+            'kwery-message-cluster-with-below': shouldClusterWithBelow,
+            'kwery-message-full-width': fullWidth
         }"
     >
         <p
@@ -28,6 +29,7 @@ defineProps<{
     noBottomMargin?: boolean;
     shouldClusterWithAbove?: boolean;
     shouldClusterWithBelow?: boolean;
+    fullWidth?: boolean;
 }>();
 </script>
 
@@ -70,6 +72,11 @@ defineProps<{
     word-break: break-word;
     line-height: 1.5;
     background-color: var(--kwery-color-background-gray-shade-1);
+}
+
+.kwery-message-full-width .kwery-conversation-message {
+    max-width: 100%;
+    width: 100%;
 }
 
 .kwery-message-from-user {

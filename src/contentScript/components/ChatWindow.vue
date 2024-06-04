@@ -1,12 +1,18 @@
 <template>
-    <div class="kwery-chat-window">
+    <!-- -kwery-root is to initialize css variables inside the shadow DOM -->
+    <div class="kwery-chat-window kwery-root">
         <ChatHeader />
         <ErrorRenderer ref="errorRenderer" />
+        <EmptyView v-if="!hasCompletedSetup" />
         <ConversationRenderer
+            v-else
             :conversation="conversation"
             :isLoading="isLoading"
         />
-        <ChatInput @submit="(text) => emit('addMessage', text)" />
+        <ChatInput
+            @submit="(text) => emit('addMessage', text)"
+            :inputDisabled="!hasCompletedSetup"
+        />
     </div>
 </template>
 
@@ -15,6 +21,7 @@ import { Conversation } from "@/types/Conversation";
 import ConversationRenderer from "./ConversationRenderer.vue";
 import ChatHeader from "./ChatHeader.vue";
 import ChatInput from "./ChatInput.vue";
+import EmptyView from "./EmptyView.vue";
 import ErrorRenderer from "@/components/ErrorRenderer.vue";
 import { ref } from "vue";
 
@@ -30,6 +37,7 @@ function addError(message: string) {
 // TODO: Possibly migrate the conversation prop to a model
 defineProps<{
     conversation: Conversation;
+    hasCompletedSetup: boolean;
 
     // TODO: Use a store for this
     isLoading: boolean;

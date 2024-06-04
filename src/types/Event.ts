@@ -1,5 +1,5 @@
 import { Conversation } from "./Conversation";
-import { Settings, SettingsToUpdate } from "./Settings";
+import { Settings, SettingsToUpdate, SettingsStatus } from "./Settings";
 import { ProviderKey } from "./Provider";
 
 export type EventStatus = {
@@ -76,12 +76,31 @@ export type GetSettingsEventResponse = {
     status: EventStatus;
 };
 
+export type GetSettingsStatusEvent = {
+    type: "getSettingsStatus";
+};
+
+export type GetSettingsStatusEventResponse = {
+    type: "getSettingsStatusResponse";
+    response?: SettingsStatus;
+    status: EventStatus;
+};
+
 export type OpenSettingsPageEvent = {
     type: "openSettingsPage";
 };
 
 export type OpenSettingsPageEventResponse = {
     type: "openSettingsPageResponse";
+    status: EventStatus;
+};
+
+export type OpenWelcomePageEvent = {
+    type: "openWelcomePage";
+};
+
+export type OpenWelcomePageEventResponse = {
+    type: "openWelcomePageResponse";
     status: EventStatus;
 };
 
@@ -125,7 +144,9 @@ export type Event =
     | GetCompletionEvent
     | GetConversationEvent
     | GetSettingsEvent
+    | GetSettingsStatusEvent
     | OpenSettingsPageEvent
+    | OpenWelcomePageEvent
     | SetApiKeyEvent
     | SetConversationEvent
     | SetSettingsEvent;
@@ -136,7 +157,9 @@ export type EventResponse =
     | GetCompletionEventResponse
     | GetConversationEventResponse
     | GetSettingsEventResponse
+    | GetSettingsStatusEventResponse
     | OpenSettingsPageEventResponse
+    | OpenWelcomePageEventResponse
     | SetApiKeyEventResponse
     | SetConversationEventResponse
     | SetSettingsEventResponse;

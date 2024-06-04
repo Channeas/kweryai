@@ -5,7 +5,9 @@ import handleGetAvailableModels from "./handleGetAvailableModels";
 import handleGetCompletion from "./handleGetCompletion";
 import handleGetConversation from "./handleGetConversation";
 import handleGetSettings from "./handleGetSettings";
+import handleGetSettingsStatus from "./handleGetSettingsStatus";
 import handleOpenSettingsPage from "./handleOpenSettingsPage";
+import handleOpenWelcomePage from "./handleOpenWelcomePage";
 import handleSetApiKey from "./handleSetApiKey";
 import handleSetConversation from "./handleSetConversation";
 import handleSetSettings from "./handleSetSettings";
@@ -42,8 +44,12 @@ async function routeEventToHandler(
             return await handleGetConversation(event, sender);
         case "getSettings":
             return await handleGetSettings();
+        case "getSettingsStatus":
+            return await handleGetSettingsStatus();
         case "openSettingsPage":
             return await handleOpenSettingsPage();
+        case "openWelcomePage":
+            return await handleOpenWelcomePage();
         case "setApiKey":
             return await handleSetApiKey(event);
         case "setConversation":
