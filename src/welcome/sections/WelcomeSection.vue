@@ -2,7 +2,7 @@
     <SectionContainer>
         <h1>Welcome to Kwery AI!</h1>
         <p>
-            This extension allows you to ask an AI chatbot questions, and get
+            This extension allows you to ask questions to an AI chatbot, and get
             answers based on the text of the page you're currently on.
         </p>
         <p>
