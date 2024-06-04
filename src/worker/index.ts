@@ -1,5 +1,6 @@
 import { Event } from "@/types/Event";
 import handleEvent from "./handleEvent";
+import openWelcomePage from "./utils/openWelcomePage";
 
 console.log("Service worker works");
 
@@ -12,8 +13,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 chrome.runtime.onInstalled.addListener((details) => {
     if (details.reason === "install") {
-        chrome.tabs.create({
-            url: "welcome.html"
-        });
+        openWelcomePage();
     }
 });
