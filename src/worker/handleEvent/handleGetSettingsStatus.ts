@@ -2,8 +2,7 @@ import { SettingsStatus } from "@/types/Settings";
 import { GetSettingsStatusEventResponse, EventStatus } from "@/types/Event";
 
 import getErrorAsString from "@/utils/getErrorAsString";
-import { getSelectedProvider } from "@/worker/storage/selectedProvider";
-import { getObfuscatedApiKeys } from "@/worker/storage/apiKey";
+import hasProviderAndApiKey from "@/worker/utils/hasProviderAndApiKey";
 
 export default async function handleGetSettingsStatus(): Promise<GetSettingsStatusEventResponse> {
     const status: EventStatus = {
@@ -13,13 +12,8 @@ export default async function handleGetSettingsStatus(): Promise<GetSettingsStat
     let response: SettingsStatus | undefined;
 
     try {
-        const provider = await getSelectedProvider();
-        const { [provider]: apiKeyForProvider } = await getObfuscatedApiKeys([
-            provider
-        ]);
-
         response = {
-            hasCompletedSetup: !!apiKeyForProvider
+            hasCompletedSetup: await hasProviderAndApiKey()
         };
 
         status.success = true;
