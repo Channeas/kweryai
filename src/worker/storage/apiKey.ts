@@ -49,6 +49,8 @@ export async function clearAllApiKeys() {
     await chrome.storage.local.remove(storageKeys);
 }
 
+export const apiStorageKeyStart = "kweryApiKeyFor";
+
 function createStorageKeyForProvider(provider: ProviderKey) {
-    return `kweryApiKeyFor-${provider}`;
+    return `${apiStorageKeyStart}-${provider}`;
 }

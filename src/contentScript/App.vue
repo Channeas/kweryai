@@ -17,6 +17,7 @@ import { reactive, ref } from "vue";
 import ChatWindow from "./components/ChatWindow.vue";
 import ChatToggle from "./components/ChatToggle.vue";
 import sendEvent from "@/utils/sendEvent";
+import sendSetupMessage from "@/utils/sendSetupMessage";
 
 const showChat = ref(true);
 
@@ -122,8 +123,19 @@ async function getCompletion() {
     await setConversation();
 }
 
-getConversation();
-getSettingsStatus();
+async function performSetup() {
+    sendSetupMessage();
+    getSettingsStatus();
+    getConversation();
+}
+
+chrome.runtime.onMessage.addListener((message) => {
+    if (message.type === "settingsStatusChanged" && message.hasCompletedSetup) {
+        hasCompletedSetup.value = true;
+    }
+});
+
+performSetup();
 </script>
 
 <style>

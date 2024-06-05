@@ -1,18 +1,17 @@
 import { ProviderKey } from "@/types/Provider";
-
 import { defaultProvider } from "@/defaults";
 
-const storageKey = "kwerySelectedProvider";
+export const providerStorageKey = "kwerySelectedProvider";
 
 export async function getSelectedProvider(): Promise<ProviderKey> {
-    const { [storageKey]: selectedProvider } =
-        await chrome.storage.local.get(storageKey);
+    const { [providerStorageKey]: selectedProvider } =
+        await chrome.storage.local.get(providerStorageKey);
 
     return selectedProvider || defaultProvider;
 }
 
 export async function setSelectedProvider(selectedProvider: ProviderKey) {
     await chrome.storage.local.set({
-        [storageKey]: selectedProvider
+        [providerStorageKey]: selectedProvider
     });
 }
