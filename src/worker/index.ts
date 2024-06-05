@@ -2,7 +2,7 @@ import { Event } from "@/types/Event";
 import handleEvent from "./handleEvent";
 import openWelcomePage from "./utils/openWelcomePage";
 import handleNewContentScript from "./handleNewContentScript";
-import handleStorageChanges from "./handleStorageChange";
+import handleStorageChanges from "./handleStorageChanges";
 
 console.log("Service worker works");
 
