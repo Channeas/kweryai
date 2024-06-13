@@ -4,6 +4,10 @@ export default async function insertScript(tabId: number, tabUrl?: string) {
     if (!tabId) return;
 
     if (await tabAlreadyHasScript(tabId)) {
+        sendNotification(
+            "Unable to insert chat again",
+            "This page should already have the KweryAI chat inserted. If you cannot find it, please try reloading"
+        );
         return;
     }
 
