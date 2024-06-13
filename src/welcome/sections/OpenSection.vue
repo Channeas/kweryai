@@ -5,8 +5,8 @@
         <p>
             The simplest is to click the Kwery AI extension icon (the robot
             shown above). To see the extension icon, you first have to click the
-            “Extensions” button in the top right of your browser window, which
-            should be shown in the form of a puzzle icon. While you’re there,
+            "Extensions" button in the top right of your browser window, which
+            should be shown in the form of a puzzle icon. While you're there,
             you might want to pin the extension for easy access.
         </p>
 
@@ -27,8 +27,8 @@
                 >)
             </li>
             <li>
-                Start typing “Kwery” in the address bar (omnibox) at the top of
-                your browser window, and you should see “Open Kwery AI” as an
+                Start typing "Kwery" in the address bar (omnibox) at the top of
+                your browser window, and you should see "Open Kwery AI" as an
                 option
             </li>
         </ul>

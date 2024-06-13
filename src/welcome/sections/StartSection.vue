@@ -4,7 +4,7 @@
         <p>
             Before you can start using the Kwery AI extension, you need to
             configure which AI model and API key you want to use. To do this,
-            click the “Configure Kwery AI” button below to go to the settings
+            click the "Configure Kwery AI" button below to go to the settings
             page.
         </p>
 
