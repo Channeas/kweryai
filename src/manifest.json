@@ -13,6 +13,7 @@
         }
     },
     "icons": {
+        "16": "icons/kweryai16.png",
         "48": "icons/kweryai48.png",
         "64": "icons/kweryai64.png",
         "128": "icons/kweryai128.png"
@@ -21,7 +22,13 @@
         "page": "settings.html",
         "open_in_tab": false
     },
-    "permissions": ["activeTab", "notifications", "scripting", "storage"],
+    "permissions": [
+        "activeTab",
+        "contextMenus",
+        "notifications",
+        "scripting",
+        "storage"
+    ],
     "web_accessible_resources": [
         {
             "resources": ["icons/kweryai64.png", "css/script.css"],

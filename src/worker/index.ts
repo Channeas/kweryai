@@ -4,23 +4,32 @@ import handleNewContentScript from "./handleNewContentScript";
 import handleStorageChanges from "./handleStorageChanges";
 import insertContentScript from "./utils/insertContentScript";
 import openWelcomePage from "./utils/openWelcomePage";
-import sendNotification from "@/utils/sendNotification";
 
 console.log("Service worker works");
 
 chrome.action.onClicked.addListener(async (tab) => {
     if (!tab?.id) return;
+    await insertContentScript(tab.id, tab.url);
+});
 
-    const isChromePage = tab.url?.startsWith("chrome://");
-    if (isChromePage) {
-        sendNotification(
-            "Unable to insert chat",
-            "Unfortunately KweryAI does not work on Chrome pages"
-        );
-        return;
+const contextMenuInsertId = "insertKweryAI";
+
+chrome.contextMenus.create({
+    documentUrlPatterns: [
+        "*://*/*",
+        `chrome-extension://${chrome.runtime.id}/welcome.html`
+    ],
+    id: contextMenuInsertId,
+    title: "Insert KweryAI chat"
+});
+
+chrome.contextMenus.onClicked.addListener(async ({ menuItemId }, tab) => {
+    switch (menuItemId) {
+        case contextMenuInsertId:
+            if (!tab?.id) break;
+            await insertContentScript(tab.id, tab.url);
+            break;
     }
-
-    await insertContentScript(tab.id);
 });
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {

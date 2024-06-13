@@ -1,6 +1,21 @@
-export default async function insertScript(tabId: number) {
+import sendNotification from "@/utils/sendNotification";
+
+export default async function insertScript(tabId: number, tabUrl?: string) {
+    if (!tabId) return;
+
     if (await tabAlreadyHasScript(tabId)) {
         return;
+    }
+
+    if (tabUrl) {
+        const isChromePage = tabUrl?.startsWith("chrome://");
+        if (isChromePage) {
+            sendNotification(
+                "Unable to insert chat",
+                "Unfortunately KweryAI does not work on Chrome pages"
+            );
+            return;
+        }
     }
 
     await chrome.scripting.executeScript({
