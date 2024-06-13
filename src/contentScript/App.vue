@@ -146,8 +146,9 @@ async function performSetup() {
 }
 
 chrome.runtime.onMessage.addListener((message) => {
-    if (message.type === "settingsStatusChanged" && message.hasCompletedSetup) {
-        hasCompletedSetup.value = true;
+    if (message.type === "openChat") {
+        if (!showChat.value) showChat.value = true;
+        return;
     }
 
     if (
@@ -157,6 +158,11 @@ chrome.runtime.onMessage.addListener((message) => {
         if (!showChat.value) showChat.value = true;
 
         addMessageAfterSetup(message.text);
+        return;
+    }
+
+    if (message.type === "settingsStatusChanged" && message.hasCompletedSetup) {
+        hasCompletedSetup.value = true;
     }
 });
 

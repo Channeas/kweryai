@@ -6,6 +6,10 @@ export default async function insertScript(tabId: number, tabUrl?: string) {
 
     const chatAlreadyInserted = await tabAlreadyHasScript(tabId);
     if (chatAlreadyInserted) {
+        await chrome.tabs.sendMessage(tabId, {
+            type: "openChat"
+        });
+
         sendNotification(
             "Unable to insert chat again",
             "This page should already have the KweryAI chat inserted. If you cannot find it, please try reloading and then inserting again"
