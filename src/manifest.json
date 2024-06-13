@@ -21,7 +21,7 @@
         "page": "settings.html",
         "open_in_tab": false
     },
-    "permissions": ["activeTab", "scripting", "storage"],
+    "permissions": ["activeTab", "notifications", "scripting", "storage"],
     "web_accessible_resources": [
         {
             "resources": ["icons/kweryai64.png", "css/script.css"],
