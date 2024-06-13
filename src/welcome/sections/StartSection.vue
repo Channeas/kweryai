@@ -9,7 +9,6 @@
         </p>
 
         <div class="kwery-start-button-container">
-            <!-- TODO: Figure out transitions here - perhaps the same as for the chat toggle icon? -->
             <button @click="openSettings" class="kwery-start-configure-button">
                 Configure Kwery AI
             </button>
