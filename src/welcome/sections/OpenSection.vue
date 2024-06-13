@@ -14,7 +14,16 @@
 
         <ul>
             <li>Right click on almost any page, and click “Open Kwery AI”</li>
-            <li>Use the shortcut, which is ctrl + q or cmd + q by default</li>
+            <li>
+                Use the shortcut, which is Ctrl + Q or Cmd + Q by default (but
+                can be changed on
+                <a
+                    @click="openShortcutsPage"
+                    href="chrome://extensions/shortcuts"
+                    target="_blank"
+                    >chrome://extensions/shortcuts</a
+                >)
+            </li>
             <li>
                 Start typing “Kwery” in the address bar (omnibox) at the top of
                 your browser window, and you should see “Open Kwery AI” as an
@@ -26,6 +35,16 @@
 
 <script lang="ts" setup>
 import SectionContainer from "../components/SectionContainer.vue";
+
+function openShortcutsPage(event: MouseEvent) {
+    // Linking to chrome://extensions/shortcuts doesn't work for me - the page isn't opened
+    // However, if it does work in some cases, it's best to still prevent the default link behavior
+    event.preventDefault();
+
+    chrome.tabs.create({
+        url: "chrome://extensions/shortcuts"
+    });
+}
 </script>
 
 <style></style>
