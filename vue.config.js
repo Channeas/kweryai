@@ -32,11 +32,6 @@ const pages = {
     welcome: {
         entry: "src/welcome/main.ts"
     },
-    popup: {
-        entry: "src/popup/main.ts",
-        template: "public/index.html",
-        filename: "popup.html"
-    },
     script: {
         entry: "src/contentScript/main.ts"
     },
