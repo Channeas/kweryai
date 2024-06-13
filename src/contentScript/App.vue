@@ -23,6 +23,12 @@ const showChat = ref(true);
 
 const chatWindow = ref();
 
+const textConversation: Conversation = reactive({
+    messages: []
+});
+let hasLoadedConversation = false;
+let initialMessage: string;
+
 function addError(errorMessage: string) {
     if (chatWindow.value) {
         chatWindow.value.addError(errorMessage);
@@ -50,14 +56,24 @@ async function addMessage(text: string) {
     isGettingCompletion.value = false;
 }
 
-const textConversation: Conversation = reactive({
-    messages: []
-});
+async function addMessageAfterSetup(text: string) {
+    if (!hasLoadedConversation) {
+        initialMessage = text;
+        return;
+    }
+
+    await addMessage(text);
+}
 
 async function getConversation() {
     const response = await sendEvent({ type: "getConversation" });
     if (response.type === "getConversationResponse") {
         textConversation.messages = response.response.conversation.messages;
+
+        hasLoadedConversation = true;
+        if (initialMessage) {
+            await addMessage(initialMessage);
+        }
     }
 }
 
@@ -132,6 +148,15 @@ async function performSetup() {
 chrome.runtime.onMessage.addListener((message) => {
     if (message.type === "settingsStatusChanged" && message.hasCompletedSetup) {
         hasCompletedSetup.value = true;
+    }
+
+    if (
+        message.type === "addMessageFromOmnibox" &&
+        typeof message.text === "string"
+    ) {
+        if (!showChat.value) showChat.value = true;
+
+        addMessageAfterSetup(message.text);
     }
 });
 

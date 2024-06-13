@@ -18,6 +18,9 @@
         "64": "icons/kweryai64.png",
         "128": "icons/kweryai128.png"
     },
+    "omnibox": {
+        "keyword": "kwery"
+    },
     "options_ui": {
         "page": "settings.html",
         "open_in_tab": false

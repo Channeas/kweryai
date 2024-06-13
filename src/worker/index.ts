@@ -4,6 +4,8 @@ import handleNewContentScript from "./handleNewContentScript";
 import handleStorageChanges from "./handleStorageChanges";
 import insertContentScript from "./utils/insertContentScript";
 import openWelcomePage from "./utils/openWelcomePage";
+import getCurrentTab from "@/utils/getCurrentTab";
+import tabAlreadyHasScript from "./utils/tabAlreadyHasScript";
 
 console.log("Service worker works");
 
@@ -30,6 +32,27 @@ chrome.contextMenus.onClicked.addListener(async ({ menuItemId }, tab) => {
             await insertContentScript(tab.id, tab.url);
             break;
     }
+});
+
+chrome.omnibox.setDefaultSuggestion({ description: "Ask using KweryAI" });
+
+chrome.omnibox.onInputEntered.addListener(async (text) => {
+    const currentTab = await getCurrentTab();
+    if (!currentTab?.id) return;
+
+    // This is checked by insertContentScript as well
+    // However, here there should be no notification if the tab already has the chat inserted
+    const chatAlreadyInserted = await tabAlreadyHasScript(currentTab.id);
+    if (!chatAlreadyInserted) {
+        await insertContentScript(currentTab.id, currentTab.url);
+    }
+
+    if (!text) return;
+
+    chrome.tabs.sendMessage(currentTab.id, {
+        type: "addMessageFromOmnibox",
+        text
+    });
 });
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {

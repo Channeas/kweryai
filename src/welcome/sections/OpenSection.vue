@@ -27,9 +27,11 @@
                 >)
             </li>
             <li>
-                Start typing "Kwery" in the address bar (omnibox) at the top of
-                your browser window, and you should see "Open Kwery AI" as an
-                option
+                Start typing "kwery" in the address bar (omnibox) at the top of
+                your browser window, and then press tab to select the KweryAI
+                extension as the intented target. When you keep typing, you
+                should see "Ask using KweryAI". When you submit your query, it
+                will be inserted directly into the KweryAI chat
             </li>
         </ul>
     </SectionContainer>

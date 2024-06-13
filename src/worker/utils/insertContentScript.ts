@@ -1,9 +1,11 @@
 import sendNotification from "@/utils/sendNotification";
+import tabAlreadyHasScript from "./tabAlreadyHasScript";
 
 export default async function insertScript(tabId: number, tabUrl?: string) {
     if (!tabId) return;
 
-    if (await tabAlreadyHasScript(tabId)) {
+    const chatAlreadyInserted = await tabAlreadyHasScript(tabId);
+    if (chatAlreadyInserted) {
         sendNotification(
             "Unable to insert chat again",
             "This page should already have the KweryAI chat inserted. If you cannot find it, please try reloading and then inserting again"
@@ -26,16 +28,4 @@ export default async function insertScript(tabId: number, tabUrl?: string) {
         target: { tabId: tabId },
         files: ["js/script.js", "js/chunk-vendors.js"]
     });
-}
-
-async function tabAlreadyHasScript(tabId: number) {
-    try {
-        const response = await chrome.tabs.sendMessage(tabId, {
-            type: "ping"
-        });
-
-        return response && response.active;
-    } catch {
-        return false;
-    }
 }
