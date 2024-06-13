@@ -2,7 +2,6 @@
     "name": "Kwery AI",
     "manifest_version": 3,
     "action": {
-        "default_popup": "popup.html",
         "default_title": "Kwery AI - Ask questions on any page"
     },
     "background": {
