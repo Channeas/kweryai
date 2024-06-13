@@ -7,6 +7,11 @@
     "background": {
         "service_worker": "js/worker.js"
     },
+    "commands": {
+        "_execute_action": {
+            "suggested_key": "Ctrl+Q"
+        }
+    },
     "icons": {
         "48": "icons/kweryai48.png",
         "64": "icons/kweryai64.png",
