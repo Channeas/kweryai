@@ -13,7 +13,9 @@
         <p>The other ways are:</p>
 
         <ul>
-            <li>Right click on almost any page, and click “Open Kwery AI”</li>
+            <li>
+                Right click on almost any page, and click "Insert KweryAI chat"
+            </li>
             <li>
                 Use the shortcut, which is Ctrl + Q or Cmd + Q by default (but
                 can be changed on
