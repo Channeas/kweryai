@@ -1,27 +1,21 @@
 import { createApp } from "vue";
 import App from "./App.vue";
-import ChatApp from "@/contentScript/App.vue";
-import createExtensionContainerAndRoot from "@/utils/createExtensionContainerAndRoot";
 
 createApp(App).mount("#app");
 
 let hasCreatedChat = false;
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.type === "ping") {
-        sendResponse({ active: hasCreatedChat });
-    }
-
     if (message.type === "showChatOnWelcomePage") {
         if (hasCreatedChat) return;
 
-        const { extensionContainer, extensionRoot } =
-            createExtensionContainerAndRoot();
+        const script = document.createElement("script");
+        script.setAttribute("src", chrome.runtime.getURL("js/script.js"));
+        script.onload = () => sendResponse();
 
-        document.body.appendChild(extensionRoot);
-
-        createApp(ChatApp).mount(extensionContainer);
-
+        document.body.appendChild(script);
         hasCreatedChat = true;
+
+        return true;
     }
 });

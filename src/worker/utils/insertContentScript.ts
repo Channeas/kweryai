@@ -7,7 +7,7 @@ export default async function insertScript(tabId: number, tabUrl?: string) {
 
     const isWelcomePage = tabUrl === getWelcomePageUrl();
     if (isWelcomePage) {
-        chrome.tabs.sendMessage(tabId, {
+        await chrome.tabs.sendMessage(tabId, {
             type: "showChatOnWelcomePage"
         });
 
