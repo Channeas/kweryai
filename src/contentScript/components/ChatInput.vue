@@ -35,9 +35,9 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 
-defineProps<{
+const props = defineProps<{
     inputDisabled: boolean;
 }>();
 
@@ -59,6 +59,8 @@ function handleSubmit() {
     message.value = "";
     inputField.value?.blur();
 }
+
+onMounted(() => !props.inputDisabled && inputField?.value?.focus());
 </script>
 
 <style scoped>
