@@ -60,7 +60,14 @@ function handleSubmit() {
     inputField.value?.blur();
 }
 
-onMounted(() => !props.inputDisabled && inputField?.value?.focus());
+// Focusing right away scrolls to the bottom of the page. nextTick is too soon as well
+const arbitraryFocusDelayInMilliseconds = 100;
+onMounted(() =>
+    setTimeout(
+        () => !props.inputDisabled && inputField?.value?.focus(),
+        arbitraryFocusDelayInMilliseconds
+    )
+);
 </script>
 
 <style scoped>
