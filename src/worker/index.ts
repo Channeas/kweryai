@@ -6,6 +6,7 @@ import insertContentScript from "./utils/insertContentScript";
 import openWelcomePage from "./utils/openWelcomePage";
 import getCurrentTab from "@/utils/getCurrentTab";
 import tabAlreadyHasScript from "./utils/tabAlreadyHasScript";
+import getWelcomePageUrl from "@/utils/getWelcomePageUrl";
 
 console.log("Service worker works");
 
@@ -17,10 +18,7 @@ chrome.action.onClicked.addListener(async (tab) => {
 const contextMenuInsertId = "insertKweryAI";
 
 chrome.contextMenus.create({
-    documentUrlPatterns: [
-        "*://*/*",
-        `chrome-extension://${chrome.runtime.id}/welcome.html`
-    ],
+    documentUrlPatterns: ["*://*/*", getWelcomePageUrl()],
     id: contextMenuInsertId,
     title: "Insert KweryAI chat"
 });

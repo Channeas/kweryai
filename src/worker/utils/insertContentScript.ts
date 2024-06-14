@@ -1,8 +1,23 @@
 import sendNotification from "@/utils/sendNotification";
 import tabAlreadyHasScript from "./tabAlreadyHasScript";
+import getWelcomePageUrl from "@/utils/getWelcomePageUrl";
 
 export default async function insertScript(tabId: number, tabUrl?: string) {
     if (!tabId) return;
+
+    const isWelcomePage = tabUrl === getWelcomePageUrl();
+    if (isWelcomePage) {
+        chrome.tabs.sendMessage(tabId, {
+            type: "showChatOnWelcomePage"
+        });
+
+        // This is only relevant if the chat has already been inserted
+        await chrome.tabs.sendMessage(tabId, {
+            type: "openChat"
+        });
+
+        return;
+    }
 
     const chatAlreadyInserted = await tabAlreadyHasScript(tabId);
     if (chatAlreadyInserted) {
@@ -12,7 +27,7 @@ export default async function insertScript(tabId: number, tabUrl?: string) {
 
         sendNotification(
             "Unable to insert chat again",
-            "This page should already have the KweryAI chat inserted. If you cannot find it, please try reloading and then inserting again"
+            "This page should already have the KweryAI chat inserted. If you cannot find it, please try reloading the page and then inserting again"
         );
         return;
     }
