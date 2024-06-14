@@ -92,6 +92,7 @@ defineExpose({ addError });
 }
 
 .kwery-error-renderer-message {
+    word-break: break-word;
     text-align: left;
     margin: 0;
 
