@@ -17,12 +17,6 @@ chrome.action.onClicked.addListener(async (tab) => {
 
 const contextMenuInsertId = "insertKweryAI";
 
-chrome.contextMenus.create({
-    documentUrlPatterns: ["*://*/*", getWelcomePageUrl()],
-    id: contextMenuInsertId,
-    title: "Insert KweryAI chat"
-});
-
 chrome.contextMenus.onClicked.addListener(async ({ menuItemId }, tab) => {
     switch (menuItemId) {
         case contextMenuInsertId:
@@ -31,8 +25,6 @@ chrome.contextMenus.onClicked.addListener(async ({ menuItemId }, tab) => {
             break;
     }
 });
-
-chrome.omnibox.setDefaultSuggestion({ description: "Ask using KweryAI" });
 
 chrome.omnibox.onInputEntered.addListener(async (text) => {
     const currentTab = await getCurrentTab();
@@ -65,6 +57,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 chrome.runtime.onInstalled.addListener((details) => {
+    chrome.contextMenus.create({
+        documentUrlPatterns: ["*://*/*", getWelcomePageUrl()],
+        id: contextMenuInsertId,
+        title: "Insert KweryAI chat"
+    });
+
+    chrome.omnibox.setDefaultSuggestion({ description: "Ask using KweryAI" });
+
     if (details.reason === "install") {
         openWelcomePage();
     }
