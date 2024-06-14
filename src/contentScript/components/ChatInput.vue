@@ -82,7 +82,7 @@ function handleSubmit() {
     outline: none;
     border: none;
     margin: 0 !important;
-    font-size: 14px;
+    font-size: var(--kwery-font-size);
 }
 
 .kwery-chat-input-submit-button {
