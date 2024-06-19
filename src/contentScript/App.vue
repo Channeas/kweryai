@@ -1,26 +1,36 @@
 <template>
-    <ChatWindow
-        v-if="showChat"
-        @addMessage="addMessage"
-        @closeChat="showChat = false"
-        :conversation="textConversation"
-        :isLoading="isGettingCompletion"
-        :hasCompletedSetup="hasCompletedSetup"
-        ref="chatWindow"
-    />
+    <Transition name="fade-up">
+        <ChatWindow
+            v-if="showChat"
+            @addMessage="addMessage"
+            @closeChat="showChat = false"
+            :conversation="textConversation"
+            :isLoading="isGettingCompletion"
+            :hasCompletedSetup="hasCompletedSetup"
+            ref="chatWindow"
+        />
+    </Transition>
 
-    <ChatToggle v-model="showChat" />
+    <Transition name="jump-left">
+        <ChatToggle v-if="showToggle" v-model="showChat" />
+    </Transition>
 </template>
 
 <script setup lang="ts">
 import { Conversation } from "@/types/Conversation";
-import { reactive, ref } from "vue";
+import { onMounted, reactive, ref } from "vue";
 import ChatWindow from "./components/ChatWindow.vue";
 import ChatToggle from "./components/ChatToggle.vue";
 import sendEvent from "@/utils/sendEvent";
 import sendSetupMessage from "@/utils/sendSetupMessage";
 
-const showChat = ref(true);
+const showToggle = ref(false);
+const showChat = ref(false);
+onMounted(() => {
+    showToggle.value = true;
+
+    setTimeout(() => (showChat.value = true), 400);
+});
 
 const chatWindow = ref();
 
@@ -173,4 +183,27 @@ performSetup();
 <style>
 /* TODO: Add inter? */
 @import "../variables.css";
+
+.fade-up-enter-active,
+.fade-up-leave-active {
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.fade-up-enter-from,
+.fade-up-leave-to {
+    opacity: 0;
+    transform: translateY(10px);
+}
+
+.jump-left-enter-active,
+.jump-left-leave-active {
+    transition: transform 1s ease;
+}
+
+.jump-left-enter-from,
+.jump-left-leave-to {
+    transform: translateX(100px);
+}
 </style>
