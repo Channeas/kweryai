@@ -8,6 +8,7 @@
                 class="kwery-chat-input-field"
                 placeholder="Ask away..."
                 autocomplete="off"
+                spellcheck="false"
                 :disabled="inputDisabled"
             />
             <button
@@ -78,8 +79,15 @@ onMounted(() =>
 }
 
 .kwery-chat-input-field {
-    padding: var(--kwery-whitespace-large);
-    padding-right: 50px;
+    /* Unique padding due to the height of the input field */
+    /* The total height should be 44px (button is 28px + 8px whitespace * 2) */
+    /* Also, the reason I don't set this height in a parent container is that clicking anywhere */
+    /* in the bottom part of the chat should focus the input field. Using padding allows for  */
+    /* this to be handled purely by CSS */
+    padding: calc(var(--kwery-whitespace-large) - 2px);
+
+    padding-left: var(--kwery-whitespace-large);
+    padding-right: 40px;
 
     border-radius: 0 0 var(--kwery-border-radius-medium)
         var(--kwery-border-radius-medium);
@@ -96,8 +104,8 @@ onMounted(() =>
 
 .kwery-chat-input-submit-button {
     position: absolute;
-    right: 16px;
-    padding: 4px;
+    right: var(--kwery-whitespace-small);
+    padding: var(--kwery-whitespace-tiny);
     height: 28px;
     width: 28px;
     background-color: transparent !important;
