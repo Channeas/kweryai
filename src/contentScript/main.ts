@@ -16,7 +16,10 @@ shadow.appendChild(styleSheet);
 
 document.body.appendChild(extensionRoot);
 
-createApp(App).mount(extensionContainer);
+// This prevents an initial transition on some elements when the stylesheet loads
+styleSheet.onload = () => {
+    createApp(App).mount(extensionContainer);
+};
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type === "ping") {
