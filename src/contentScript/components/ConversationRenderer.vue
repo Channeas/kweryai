@@ -2,24 +2,25 @@
     <div ref="renderer" class="kwery-conversation-renderer">
         <div class="kwery-conversation-renderer-list">
             <!-- TODO: Improve key -->
-            <!-- TODO: Add transition -->
-            <ConversationMessage
-                v-for="(message, index) of conversation.messages"
-                :key="message.text"
-                :message="message"
-                :noTopMargin="index === 0"
-                :noBottomMargin="index === conversation.messages.length - 1"
-                :shouldClusterWithAbove="
-                    index !== 0 &&
-                    conversation.messages[index - 1].sentByUser ===
-                        message.sentByUser
-                "
-                :shouldClusterWithBelow="
-                    !!conversation.messages[index + 1] &&
-                    conversation.messages[index + 1].sentByUser ===
-                        message.sentByUser
-                "
-            />
+            <TransitionGroup name="message-fade">
+                <ConversationMessage
+                    v-for="(message, index) of conversation.messages"
+                    :key="message.text"
+                    :message="message"
+                    :noTopMargin="index === 0"
+                    :noBottomMargin="index === conversation.messages.length - 1"
+                    :shouldClusterWithAbove="
+                        index !== 0 &&
+                        conversation.messages[index - 1].sentByUser ===
+                            message.sentByUser
+                    "
+                    :shouldClusterWithBelow="
+                        !!conversation.messages[index + 1] &&
+                        conversation.messages[index + 1].sentByUser ===
+                            message.sentByUser
+                    "
+                />
+            </TransitionGroup>
         </div>
 
         <LoadingIndicator v-if="isLoading" />
@@ -63,5 +64,18 @@ watch(refs.isLoading, (isLoading) => isLoading && jumpToBottomAfterNextTick());
     overflow-y: auto;
     padding: var(--kwery-whitespace-large);
     flex: 1;
+}
+
+.message-fade-enter-active,
+.message-fade-leave-active {
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+.message-fade-enter-from,
+.message-fade-leave-to {
+    opacity: 0;
+    transform: translateY(4px);
 }
 </style>
