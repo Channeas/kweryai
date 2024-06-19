@@ -1,5 +1,5 @@
 <template>
-    <div ref="renderer" class="kwery-conversation-renderer">
+    <div class="kwery-conversation-renderer">
         <div class="kwery-conversation-renderer-list">
             <!-- TODO: Improve key -->
             <TransitionGroup name="message-fade">
@@ -21,6 +21,8 @@
                     "
                 />
             </TransitionGroup>
+
+            <div ref="scrollTarget"></div>
         </div>
 
         <LoadingIndicator v-if="isLoading" />
@@ -40,23 +42,25 @@ const props = defineProps<{
     isLoading: boolean;
 }>();
 
-const renderer = ref<HTMLDivElement>();
-
-function jumpToBottomAfterNextTick() {
+const scrollTarget = ref<HTMLDivElement>();
+function jumpToBottomAfterNextTick(useSmoothScrolling?: boolean) {
     nextTick(() => {
-        if (renderer.value) {
-            renderer.value.scrollTop = renderer.value.scrollHeight;
-        }
+        scrollTarget.value?.scrollIntoView({
+            behavior: useSmoothScrolling ? "smooth" : "instant"
+        });
     });
 }
 
 onMounted(() => jumpToBottomAfterNextTick());
-watch(props.conversation, () => jumpToBottomAfterNextTick(), {
+watch(props.conversation, () => jumpToBottomAfterNextTick(true), {
     deep: true
 });
 
 const refs = toRefs(props);
-watch(refs.isLoading, (isLoading) => isLoading && jumpToBottomAfterNextTick());
+watch(
+    refs.isLoading,
+    (isLoading) => isLoading && jumpToBottomAfterNextTick(true)
+);
 </script>
 
 <style scoped>
