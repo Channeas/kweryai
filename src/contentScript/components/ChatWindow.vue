@@ -1,7 +1,7 @@
 <template>
     <!-- -kwery-root is to initialize css variables inside the shadow DOM -->
     <div class="kwery-chat-window kwery-root">
-        <ChatHeader />
+        <ChatHeader @closeChat="emit('closeChat')" />
         <ErrorRenderer ref="errorRenderer" />
         <EmptyView v-if="!hasCompletedSetup" />
         <ConversationRenderer
@@ -45,6 +45,7 @@ defineProps<{
 
 const emit = defineEmits<{
     addMessage: [message: string];
+    closeChat: [];
 }>();
 
 defineExpose({

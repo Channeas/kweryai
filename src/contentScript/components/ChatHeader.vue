@@ -1,9 +1,11 @@
 <template>
     <div class="kwery-chat-header">
-        <p class="kwery-chat-header-title">Kwery AI</p>
-        <button class="kwery-chat-header-settings-button" @click="openSettings">
+        <button
+            class="kwery-chat-header-button kwery-chat-header-settings-button"
+            @click="openSettings"
+        >
             <svg
-                class="kwery-chat-header-settings-icon"
+                class="kwery-chat-header-button-icon"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
@@ -22,14 +24,40 @@
                 />
             </svg>
         </button>
+        <p class="kwery-chat-header-title">Kwery AI</p>
+        <button
+            class="kwery-chat-header-button kwery-chat-header-close-button"
+            @click="closeChat"
+        >
+            <svg
+                class="kwery-chat-header-button-icon"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 18 18 6M6 6l12 12"
+                />
+            </svg>
+        </button>
     </div>
 </template>
 
 <script lang="ts" setup>
 import sendEvent from "@/utils/sendEvent";
 
+const emit = defineEmits<{ closeChat: [] }>();
+
 function openSettings() {
     sendEvent({ type: "openSettingsPage" });
+}
+
+function closeChat() {
+    emit("closeChat");
 }
 </script>
 
@@ -53,14 +81,13 @@ function openSettings() {
     font-weight: 700;
 }
 
-.kwery-chat-header-settings-button {
+.kwery-chat-header-button {
     border: 0;
     margin: 0;
     padding: var(--kwery-whitespace-tiny);
     background-color: transparent;
     color: var(--kwery-color-text-opposite);
     position: absolute;
-    right: var(--kwery-whitespace-large);
     height: 28px;
     width: 28px;
     cursor: pointer;
@@ -68,15 +95,23 @@ function openSettings() {
     transition: var(--kwery-transition);
 }
 
-.kwery-chat-header-settings-button:hover {
+.kwery-chat-header-button:hover {
     background-color: var(--kwery-color-primary-light-1);
 }
 
-.kwery-chat-header-settings-button:active {
+.kwery-chat-header-button:active {
     background-color: var(--kwery-color-primary-light-2);
 }
 
-.kwery-chat-header-settings-icon {
+.kwery-chat-header-settings-button {
+    left: var(--kwery-whitespace-small);
+}
+
+.kwery-chat-header-close-button {
+    right: var(--kwery-whitespace-small);
+}
+
+.kwery-chat-header-button-icon {
     height: 20px;
     width: 20px;
 }

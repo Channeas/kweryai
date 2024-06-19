@@ -2,6 +2,7 @@
     <ChatWindow
         v-if="showChat"
         @addMessage="addMessage"
+        @closeChat="showChat = false"
         :conversation="textConversation"
         :isLoading="isGettingCompletion"
         :hasCompletedSetup="hasCompletedSetup"
