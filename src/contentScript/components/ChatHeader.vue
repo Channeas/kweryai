@@ -68,7 +68,7 @@ function closeChat() {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 42px;
+    height: 44px;
     box-sizing: border-box;
     background-color: var(--kwery-color-primary);
     border-radius: var(--kwery-border-radius-medium)
