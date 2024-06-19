@@ -16,11 +16,6 @@ chrome.action.onClicked.addListener(async (tab) => {
 });
 
 const contextMenuInsertId = "insertKweryAI";
-chrome.contextMenus.create({
-    documentUrlPatterns: ["*://*/*", getWelcomePageUrl()],
-    id: contextMenuInsertId,
-    title: "Insert KweryAI chat"
-});
 
 chrome.contextMenus.onClicked.addListener(async ({ menuItemId }, tab) => {
     switch (menuItemId) {
@@ -64,6 +59,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 });
 
 chrome.runtime.onInstalled.addListener((details) => {
+    chrome.contextMenus.create({
+        documentUrlPatterns: ["*://*/*", getWelcomePageUrl()],
+        id: contextMenuInsertId,
+        title: "Insert KweryAI chat"
+    });
+
     if (details.reason === "install") {
         openWelcomePage();
     }
