@@ -1,6 +1,6 @@
 <template>
     <SectionContainer>
-        <h1>Welcome to Kwery AI!</h1>
+        <h1>Welcome to KweryAI!</h1>
         <p class="kwery-ai-instructions">
             This is the setup page for the KweryAI browser extension - the
             extension that provides the chat interface that is currently calling

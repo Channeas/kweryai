@@ -2,15 +2,15 @@
     <SectionContainer>
         <h2>Getting started</h2>
         <p>
-            Before you can start using the Kwery AI extension, you need to
+            Before you can start using the KweryAI extension, you need to
             configure which AI model and API key you want to use. To do this,
-            click the "Configure Kwery AI" button below to go to the settings
+            click the "Configure KweryAI" button below to go to the settings
             page.
         </p>
 
         <div class="kwery-start-button-container">
             <button @click="openSettings" class="kwery-start-configure-button">
-                Configure Kwery AI
+                Configure KweryAI
             </button>
         </div>
 

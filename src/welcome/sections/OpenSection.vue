@@ -1,10 +1,10 @@
 <template>
     <SectionContainer>
-        <h2>How do I open the Kwery AI chat window?</h2>
-        <p>There are four different ways to open the Kwery AI chat window.</p>
+        <h2>How do I open the KweryAI chat window?</h2>
+        <p>There are four different ways to open the KweryAI chat window.</p>
         <p>
-            The simplest is to click the Kwery AI extension icon (the robot
-            shown above). To see the extension icon, you first have to click the
+            The simplest is to click the KweryAI extension icon (the robot shown
+            above). To see the extension icon, you first have to click the
             "Extensions" button in the top right of your browser window, which
             should be shown in the form of a puzzle icon. While you're there,
             you might want to pin the extension for easy access.

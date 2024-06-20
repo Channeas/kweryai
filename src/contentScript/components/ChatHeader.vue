@@ -24,7 +24,7 @@
                 />
             </svg>
         </button>
-        <p class="kwery-chat-header-title">Kwery AI</p>
+        <p class="kwery-chat-header-title">KweryAI</p>
         <button
             class="kwery-chat-header-button kwery-chat-header-close-button"
             @click="closeChat"

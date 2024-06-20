@@ -23,7 +23,7 @@ import sendEvent from "@/utils/sendEvent";
 import ConversationMessage from "./ConversationMessage.vue";
 
 const message1 = {
-    text: 'Hello there, welcome to Kwery AI! For instructions on how to get started, please click the "Get started" button below',
+    text: 'Hello there, welcome to KweryAI! For instructions on how to get started, please click the "Get started" button below',
     sentByUser: false
 };
 const message2 = {

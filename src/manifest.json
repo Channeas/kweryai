@@ -1,8 +1,8 @@
 {
-    "name": "Kwery AI",
+    "name": "KweryAI",
     "manifest_version": 3,
     "action": {
-        "default_title": "Kwery AI - Ask questions on any page"
+        "default_title": "KweryAI - Ask questions on any page"
     },
     "background": {
         "service_worker": "js/worker.js"

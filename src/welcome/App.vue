@@ -16,7 +16,7 @@ import debugLog from "@/utils/debugLog";
 
 debugLog("Welcome app created");
 
-window.document.title = "Welcome to Kwery AI!";
+window.document.title = "Welcome to KweryAI!";
 </script>
 
 <style>
