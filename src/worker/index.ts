@@ -8,6 +8,7 @@ import getCurrentTab from "@/utils/getCurrentTab";
 import tabAlreadyHasScript from "./utils/tabAlreadyHasScript";
 import getWelcomePageUrl from "@/utils/getWelcomePageUrl";
 import debugLog from "@/utils/debugLog";
+import waitForChatReady from "./utils/waitForChatReady";
 
 debugLog("Service worker works");
 
@@ -41,6 +42,9 @@ chrome.omnibox.onInputEntered.addListener(async (text) => {
     }
 
     if (!text) return;
+
+    const chatReady = await waitForChatReady(currentTab.id);
+    if (!chatReady) return;
 
     chrome.tabs.sendMessage(currentTab.id, {
         type: "addMessageFromOmnibox",

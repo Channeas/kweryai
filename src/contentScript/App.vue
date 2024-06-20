@@ -159,7 +159,7 @@ async function performSetup() {
     getConversation();
 }
 
-chrome.runtime.onMessage.addListener((message) => {
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type === "openChat") {
         if (!showChat.value) showChat.value = true;
         return;
@@ -177,6 +177,10 @@ chrome.runtime.onMessage.addListener((message) => {
 
     if (message.type === "settingsStatusChanged" && message.hasCompletedSetup) {
         hasCompletedSetup.value = true;
+    }
+
+    if (message.type === "isChatReady") {
+        sendResponse({ ready: true });
     }
 });
 
