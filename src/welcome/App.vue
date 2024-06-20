@@ -12,6 +12,9 @@ import IconLoader from "./components/IconLoader.vue";
 import OpenSection from "./sections/OpenSection.vue";
 import StartSection from "./sections/StartSection.vue";
 import WelcomeSection from "./sections/WelcomeSection.vue";
+import debugLog from "@/utils/debugLog";
+
+debugLog("Welcome app created");
 
 window.document.title = "Welcome to Kwery AI!";
 </script>

@@ -11,6 +11,7 @@ import handleOpenWelcomePage from "./handleOpenWelcomePage";
 import handleSetApiKey from "./handleSetApiKey";
 import handleSetConversation from "./handleSetConversation";
 import handleSetSettings from "./handleSetSettings";
+import debugLog from "@/utils/debugLog";
 
 type ResponseCallback = (response?: EventResponse) => void;
 
@@ -19,7 +20,7 @@ export default async function handleEvent(
     sender: chrome.runtime.MessageSender,
     sendResponse: ResponseCallback
 ) {
-    console.log("Message received", event, sender, sendResponse);
+    debugLog("Message received", event, sender, sendResponse);
 
     const response = await routeEventToHandler(event, sender);
     if (response) {

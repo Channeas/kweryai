@@ -23,6 +23,9 @@ import ChatWindow from "./components/ChatWindow.vue";
 import ChatToggle from "./components/ChatToggle.vue";
 import sendEvent from "@/utils/sendEvent";
 import sendSetupMessage from "@/utils/sendSetupMessage";
+import debugLog from "@/utils/debugLog";
+
+debugLog("Chat app created");
 
 const showToggle = ref(false);
 const showChat = ref(false);

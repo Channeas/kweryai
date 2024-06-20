@@ -7,8 +7,9 @@ import openWelcomePage from "./utils/openWelcomePage";
 import getCurrentTab from "@/utils/getCurrentTab";
 import tabAlreadyHasScript from "./utils/tabAlreadyHasScript";
 import getWelcomePageUrl from "@/utils/getWelcomePageUrl";
+import debugLog from "@/utils/debugLog";
 
-console.log("Service worker works");
+debugLog("Service worker works");
 
 chrome.action.onClicked.addListener(async (tab) => {
     if (!tab?.id) return;

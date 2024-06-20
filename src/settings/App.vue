@@ -38,6 +38,9 @@ import ErrorRenderer from "@/components/ErrorRenderer.vue";
 import ProviderSection from "./sections/ProviderSection.vue";
 import ApiKeySection from "./sections/ApiKeySection.vue";
 import ModelSection from "./sections/ModelSection.vue";
+import debugLog from "@/utils/debugLog";
+
+debugLog("Settings app created");
 
 const errorRenderer = ref();
 
