@@ -10,11 +10,13 @@
                 autocomplete="off"
                 spellcheck="false"
                 :disabled="inputDisabled"
+                aria-label="KweryAI chat input field"
             />
             <button
                 :disabled="!messageHasContent || inputDisabled"
                 type="submit"
                 class="kwery-chat-input-submit-button"
+                aria-label="KweryAI submit button - generates a response to your message"
             >
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
