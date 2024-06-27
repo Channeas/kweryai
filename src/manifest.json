@@ -2,7 +2,7 @@
     "name": "KweryAI",
     "manifest_version": 3,
     "action": {
-        "default_title": "KweryAI - Ask questions on any page"
+        "default_title": "KweryAI - Chat with any website"
     },
     "background": {
         "service_worker": "js/worker.js"
