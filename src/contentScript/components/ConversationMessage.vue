@@ -15,15 +15,19 @@
             class="kwery-conversation-message"
             :class="{ 'kwery-message-from-user': message.sentByUser }"
         >
-            {{ message.text }}
+            <span v-for="line in messageLines" :key="line">
+                {{ line }}
+                <br />
+            </span>
         </p>
     </div>
 </template>
 
 <script lang="ts" setup>
+import { computed } from "vue";
 import { Message } from "@/types/Conversation";
 
-defineProps<{
+const props = defineProps<{
     message: Message;
     noTopMargin?: boolean;
     noBottomMargin?: boolean;
@@ -31,6 +35,12 @@ defineProps<{
     shouldClusterWithBelow?: boolean;
     fullWidth?: boolean;
 }>();
+
+const messageLines = computed((): string[] => {
+    if (!(props.message && props.message.text)) return [];
+
+    return props.message.text.split("\n");
+});
 </script>
 
 <style scoped>
