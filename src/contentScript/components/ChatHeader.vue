@@ -79,6 +79,8 @@ function closeChat() {
     margin: 0;
     font-size: var(--kwery-font-size);
     font-weight: 700;
+    cursor: default;
+    user-select: none;
 }
 
 .kwery-chat-header-button {
