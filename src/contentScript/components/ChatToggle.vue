@@ -3,6 +3,7 @@
         @click="changeToggleValue"
         class="kwery-chat-toggle kwery-root"
         tabindex="0"
+        aria-label="Toggle (open or close) the KweryAI chat window"
     >
         <img v-if="iconURL" :src="iconURL" />
         <div class="kwery-shadow-container"></div>

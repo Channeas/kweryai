@@ -3,6 +3,7 @@
         <button
             class="kwery-chat-header-button kwery-chat-header-settings-button"
             @click="openSettings"
+            aria-label="Open the KweryAI settings page"
         >
             <svg
                 class="kwery-chat-header-button-icon"
@@ -28,6 +29,7 @@
         <button
             class="kwery-chat-header-button kwery-chat-header-close-button"
             @click="closeChat"
+            aria-label="Close the KweryAI chat window"
         >
             <svg
                 class="kwery-chat-header-button-icon"
